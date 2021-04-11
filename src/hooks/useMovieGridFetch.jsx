@@ -9,6 +9,10 @@ export const useMovieGridFetch = () => {
   const [loading, setLoading] = useState(false)
   const [_error, _setError] = useState(false)
 
+  const isLoadMore = (page) => {
+    return page.search('page')
+  }
+
   const fetchData = async (endpoint) => {
     setLoading(true)
 
@@ -17,7 +21,7 @@ export const useMovieGridFetch = () => {
         .then(response => {
           setState(prev => ({
             ...prev,
-            movies: [...response.data.results],
+            movies: isLoadMore !== -1 ? [...prev.movies, ...response.data.results] : [...response.data.results],
             currentPage: response.data.page,
             totalPages: response.data.total_pages
           }))

@@ -15,7 +15,6 @@ export const HeroComponent = () => {
     axios.get(URI)
       .then(response => {
         let randomMovie = Math.floor(Math.random() * response.data.results.length)
-        console.log(response.data.results)
         setPopularMovie(response.data.results[randomMovie])
       })
       .catch(err => console.log(err))

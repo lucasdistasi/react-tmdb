@@ -7,6 +7,10 @@ export const MoviesGrid = () => {
 
   const [{state, loading, _error}, fetchData] = useMovieGridFetch()
 
+  const loadMoreMovies = () => {
+    fetchData(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${state.currentPage + 1}`)
+  }
+
   return (
     <>
       <h1 className="text-center font-sans text-5xl font-semibold my-8">Popular Movies</h1>
@@ -20,7 +24,7 @@ export const MoviesGrid = () => {
           })
         }
       </div>
-      < LoadMoreButtonComponent />
+      <LoadMoreButtonComponent callback={loadMoreMovies} />
     </>
   )
 }
