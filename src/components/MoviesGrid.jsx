@@ -1,28 +1,26 @@
-import {useEffect, useState} from "react";
 import {MovieCardComponent} from "./MovieCardComponent";
-import axios from "axios";
-
-const URI = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+import {SpinnerComponent} from "./SpinnerComponent";
+import {useMovieGridFetch} from "../hooks/useMovieGridFetch"
+import {LoadMoreButtonComponent} from "./LoadMoreButtonComponent";
 
 export const MoviesGrid = () => {
 
-  const [popularMovies, setPopularMovies] = useState([])
-
-  useEffect(() => {
-    axios.get(URI)
-      .then(response => {
-        setPopularMovies(response.data.results)
-      })
-      .catch(err => console.log(err))
-  }, [])
+  const [{state, loading, _error}, fetchData] = useMovieGridFetch()
 
   return (
-    <div className="mx-auto flex justify-center flex-wrap my-12">
-      {
-        popularMovies.map(movie => {
-          return <MovieCardComponent movies={movie} key={movie.id} />
-        })
-      }
-    </div>
+    <>
+      <h1 className="text-center font-sans text-5xl font-semibold my-8">Popular Movies</h1>
+      <div className="mx-auto flex justify-center flex-wrap mb-12 animate__animated animate__fadeIn">
+        {
+          loading && <SpinnerComponent />
+        }
+        {
+          state.movies.map(movie => {
+            return <MovieCardComponent movies={movie} key={movie.id} />
+          })
+        }
+      </div>
+      < LoadMoreButtonComponent />
+    </>
   )
 }

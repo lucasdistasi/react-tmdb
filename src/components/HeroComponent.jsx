@@ -22,7 +22,7 @@ export const HeroComponent = () => {
   }, [])
 
   return (
-    <div className="parallax flex flex-col items-center justify-center"
+    <div className="animate__animated animate__fadeIn animate__delay-1s parallax flex flex-col items-center justify-center"
          style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(${getBackdropPath(popularMovie.backdrop_path)})`}}>
       <div className="text-center w-9/12 text-white">
         <h1 className="font-bold font-sans text-5xl uppercase">
