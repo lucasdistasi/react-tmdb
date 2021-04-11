@@ -21,8 +21,8 @@ body {
 }
 
 .poster-hover-transition:hover {
-  transform: rotateY(180deg) scaleX(-1);
-  /*transform: scale(1.15);*/
+  /* transform: rotateY(180deg) scaleX(-1); */
+  transform: scale(1.15);
   opacity: 1;
 }
 
@@ -32,4 +32,15 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.btn-more-info {
+  transition: all 0.5s ease;
+}
+
+.btn-more-info:hover {
+  background-color: lawngreen;
+  color: black;
+  border-width: 1px;
+  border-color: transparent;
 }

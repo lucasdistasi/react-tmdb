@@ -36,7 +36,7 @@ export const HeroComponent = () => {
           }
         </p>
       </div>
-      <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg w-4/12">
+      <button className="bg-transparent text-white font-bold hover:text-white py-2 px-4 border border-white rounded rounded-lg w-4/12 btn-more-info uppercase">
         More Info
       </button>
     </div>

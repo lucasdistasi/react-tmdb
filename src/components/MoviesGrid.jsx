@@ -17,7 +17,7 @@ export const MoviesGrid = () => {
   }, [])
 
   return (
-    <div className="mx-auto flex justify-center flex-wrap">
+    <div className="mx-auto flex justify-center flex-wrap my-12">
       {
         popularMovies.map(movie => {
           return <MovieCardComponent movies={movie} key={movie.id} />
