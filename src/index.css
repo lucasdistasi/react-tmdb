@@ -4,7 +4,31 @@
 
 .parallax {
   min-height: 100vh;
+  background-color: wheat;
   background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  background-color: lightgray;
+}
+
+.poster-hover-transition {
+  transition: all 0.7s ease;
+  opacity: 0.9;
+}
+
+.poster-hover-transition:hover {
+  transform: rotateY(180deg) scaleX(-1);
+  /*transform: scale(1.15);*/
+  opacity: 1;
+}
+
+.card-movie {
+  width: 15rem;
+  height: 23rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
