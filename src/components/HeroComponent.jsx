@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from "axios";
 
-const URI = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
-
 export const HeroComponent = () => {
 
   const [popularMovie, setPopularMovie] = useState({})
@@ -11,6 +9,12 @@ export const HeroComponent = () => {
     return `https://image.tmdb.org/t/p/original${imgUri}`
   }
 
+  const getRandomPage = () => {
+    // Get a random page from 1 to 10
+    return Math.floor(Math.random() * 10)
+  }
+
+  const URI = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${getRandomPage()}`
   useEffect(() => {
     axios.get(URI)
       .then(response => {

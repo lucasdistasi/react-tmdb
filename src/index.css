@@ -50,7 +50,7 @@ body {
  */
 
 .loader {
-  border-top-color: #3498db;
+  border-top-color: dodgerblue;
   -webkit-animation: spinner 1.5s linear infinite;
   animation: spinner 1.5s linear infinite;
 }
