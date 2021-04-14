@@ -14,7 +14,11 @@ export const HomePage = () => {
       <NavbarComponent/>
 
       {
-        _error ? <ErrorComponent /> : <><HeroComponent/> <MoviesGrid/></>
+        _error ? <ErrorComponent /> :
+          <>
+            <HeroComponent/>
+            <MoviesGrid/>
+          </>
       }
 
       <FooterComponent />

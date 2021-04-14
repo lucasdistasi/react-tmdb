@@ -3,12 +3,19 @@
 @tailwind utilities;
 
 .parallax {
-  min-height: 100vh;
   background-color: wheat;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.mid-parallax {
+  min-height: 80vh;
+}
+
+.full-parallax {
+  min-height: 100vh;
 }
 
 body {
@@ -45,6 +52,10 @@ body {
   border-color: transparent;
 }
 
+.animate__animated.animate__delay-05s {
+  animation-delay: 0.5s
+}
+
 /*
  [ SPINNER ]
  */
@@ -56,11 +67,19 @@ body {
 }
 
 @-webkit-keyframes spinner {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spinner {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

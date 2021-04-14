@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from 'react-router-dom'
 
 export const MovieCardComponent = ({movies}) => {
 
@@ -17,13 +18,12 @@ export const MovieCardComponent = ({movies}) => {
   }
 
   return (
-    <a href={movies.id}
-      className="mx-10 my-8 rounded shadow-md card-movie rounded-3xl poster-hover-transition flex justify-center items-end animate__animated animate__fadeIn"
-      style={{
-        backgroundImage: backgroundImage
-      }}
-      onMouseEnter={setBlackBackground}
-      onMouseOut={setMovieBackground}>
-    </a>
+    <Link to={`/movies/${movies.id}`}
+          className="mx-10 my-8 rounded shadow-md card-movie rounded-3xl poster-hover-transition flex justify-center items-end animate__animated animate__fadeIn"
+          style={{
+            backgroundImage: backgroundImage
+          }}
+          onMouseEnter={setBlackBackground}
+          onMouseOut={setMovieBackground}/>
   )
 }

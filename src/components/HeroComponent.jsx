@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 export const HeroComponent = () => {
 
@@ -25,7 +26,7 @@ export const HeroComponent = () => {
   }, [])
 
   return (
-    <div className="animate__animated animate__fadeIn animate__delay-1s parallax flex flex-col items-center justify-center"
+    <div className="animate__animated animate__fadeIn animate__delay-1s parallax full-parallax flex flex-col items-center justify-center"
          style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(${getBackdropPath(popularMovie.backdrop_path)})`}}>
       <div className="text-center w-9/12 text-white">
         <h1 className="font-bold font-sans text-5xl uppercase">
@@ -39,9 +40,12 @@ export const HeroComponent = () => {
           }
         </p>
       </div>
-      <button className="bg-transparent text-white font-bold hover:text-white py-2 px-4 border border-white rounded rounded-lg w-4/12 btn-more-info uppercase">
+
+      <Link to={`/movies/${popularMovie.id}`}
+            className=" text-center bg-transparent text-white font-bold hover:text-white py-2 px-4 border border-white rounded rounded-lg w-4/12 btn-more-info uppercase">
         More Info
-      </button>
+      </Link>
+
     </div>
   )
 }
