@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.tmdb-lightblue {
+  background-color: #006987;
+}
+
+.tmdb-light-green {
+  background-color: #94dcd2;
+}
+
+.hover_tmdb-blue:hover {
+  background-color: #004052;
+}
+
+.tmdb-blue {
+  background-color: #004052;
+}
+
 .parallax {
   background-color: wheat;
   background-attachment: fixed;
@@ -46,7 +62,7 @@ body {
 }
 
 .btn-more-info:hover {
-  background-color: lawngreen;
+  background-color: #94dcd2;
   color: black;
   border-width: 1px;
   border-color: transparent;

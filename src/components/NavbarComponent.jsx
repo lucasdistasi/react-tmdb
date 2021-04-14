@@ -9,8 +9,12 @@ export const NavbarComponent = () => {
     navbarStatus === "sm:hidden" ? setNavbarStatus("sm:hidden hidden") : setNavbarStatus("sm:hidden")
   }
 
+  const itIsCurrentPath = (path) => {
+    return window.location.pathname.includes(path)
+  }
+
   return (
-    <nav className="bg-gray-800">
+    <nav className="tmdb-lightblue">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -31,9 +35,16 @@ export const NavbarComponent = () => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <Link to="/" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
-                  Home
-                </Link>
+                {
+                  itIsCurrentPath("home") || itIsCurrentPath("index") ?
+                    <Link to="/home" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                      Home
+                    </Link>
+                    :
+                    <Link to="/home" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                      Home
+                    </Link>
+                }
               </div>
             </div>
           </div>
@@ -41,10 +52,17 @@ export const NavbarComponent = () => {
       </div>
 
       <div className={navbarStatus} id="mobile-menu">
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link to="/" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
-            Home
-          </Link>
+        <div className="px-2 pt-2 pb-3 space-y-1 flex flex-col justify-center text-center">
+          {
+            itIsCurrentPath("home") || itIsCurrentPath("index") ?
+              <Link to="/home" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                Home
+              </Link>
+              :
+              <Link to="/home" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Home
+              </Link>
+          }
         </div>
       </div>
 
