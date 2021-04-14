@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 export const ActorComponent = ({actor}) => {
 
   const getBackdropPath = (size, imgUri) => {
@@ -16,4 +18,8 @@ export const ActorComponent = ({actor}) => {
       </div>
     </div>
   )
+}
+
+ActorComponent.propTypes = {
+  actor: PropTypes.object
 }

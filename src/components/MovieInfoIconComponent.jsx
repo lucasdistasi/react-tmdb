@@ -1,4 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types"
 
 export const MovieInfoIconComponent = ({info, icon, color, title}) => {
 
@@ -15,4 +16,11 @@ export const MovieInfoIconComponent = ({info, icon, color, title}) => {
       </p>
     </div>
   )
+}
+
+MovieInfoIconComponent.prototype = {
+  info: PropTypes.string,
+  icon: PropTypes.string,
+  color: PropTypes.string,
+  title: PropTypes.string
 }

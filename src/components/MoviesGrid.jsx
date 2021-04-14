@@ -17,7 +17,7 @@ export const MoviesGrid = () => {
       <div className="mx-auto flex justify-center flex-wrap mb-12 animate__animated animate__fadeIn">
         {
           state.movies.map(movie => {
-            return <MovieCardComponent movies={movie} key={movie.id} />
+            return <MovieCardComponent movie={movie} key={movie.id} />
           })
         }
       </div>

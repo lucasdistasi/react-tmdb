@@ -4,7 +4,7 @@ export const DirectorsGridComponent = ({directors}) => {
 
   return (
     directors.map(director =>
-      <DirectorComponent director={director} />
+      <DirectorComponent director={director} key={director.name} />
     )
   )
 }

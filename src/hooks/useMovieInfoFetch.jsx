@@ -1,5 +1,6 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
+import PropTypes from "prop-types"
 
 export const useMovieInfoFetch = (movieId) => {
 
@@ -30,4 +31,8 @@ export const useMovieInfoFetch = (movieId) => {
     }, [fetchMovieInfo])
 
     return [movie, loading, _error]
+}
+
+useMovieInfoFetch.prototype = {
+  movieId: PropTypes.number
 }

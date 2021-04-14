@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 export const DirectorComponent = ({director}) => {
 
   const getBackdropPath = (size, imgUri) => {
@@ -16,4 +18,8 @@ export const DirectorComponent = ({director}) => {
       </div>
     </div>
   )
+}
+
+DirectorComponent.prototype = {
+  director: PropTypes.object
 }

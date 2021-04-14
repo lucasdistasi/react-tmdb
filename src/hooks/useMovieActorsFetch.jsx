@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
+import PropTypes from "prop-types"
 
 export const useMovieActorsFetch = (movieId) => {
 
@@ -33,4 +34,8 @@ export const useMovieActorsFetch = (movieId) => {
   }, [])
 
   return {actors, loading, _error}
+}
+
+useMovieActorsFetch.prototype = {
+  movieId: PropTypes.number
 }

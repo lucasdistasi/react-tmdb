@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 export const LoadMoreButtonComponent = ({callback}) => {
 
   return (
@@ -6,4 +8,8 @@ export const LoadMoreButtonComponent = ({callback}) => {
       Load More
     </button>
   )
+}
+
+LoadMoreButtonComponent.prototype = {
+  callback: PropTypes.func
 }
