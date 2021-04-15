@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
 import PropTypes from "prop-types"
 
@@ -8,12 +8,12 @@ export const useMovieDirectorsFetch = (movieId) => {
   const [loading, setLoading] = useState(false)
   const [_error, _setError] = useState(false)
 
-  const URI = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
-
-  const fetchDirectors = () => {
+  const fetchDirectors = useCallback(() => {
+    const URI = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
     setLoading(true)
 
     try {
+      console.log(">>> Fetching directors <<<")
       axios.get(URI)
         .then(response => {
           setDirectors(
@@ -27,11 +27,11 @@ export const useMovieDirectorsFetch = (movieId) => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [movieId])
 
   useEffect(() => {
     fetchDirectors()
-  }, [])
+  }, [fetchDirectors])
 
   return {directors, loading, _error}
 }
