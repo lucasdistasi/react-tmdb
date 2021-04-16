@@ -1,21 +1,18 @@
 import {useState} from "react";
 import {Link} from 'react-router-dom'
 import PropTypes from "prop-types"
+import {getPosterPath} from "../constants/constants";
 
 export const MovieCardComponent = ({movie}) => {
 
-  const getPosterPath = (imgUri) => {
-    return `https://image.tmdb.org/t/p/w500${imgUri}`
-  }
-
-  const [backgroundImage, setBackgroundImage] = useState(`url(${getPosterPath(movie.poster_path)})`)
+  const [backgroundImage, setBackgroundImage] = useState(`url(${getPosterPath("w500", movie.poster_path)})`)
 
   const setBlackBackground = () => {
-    setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${getPosterPath(movie.poster_path)})`)
+    setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${getPosterPath("w500", movie.poster_path)})`)
   }
 
   const setMovieBackground = () => {
-    setBackgroundImage(`url(${getPosterPath(movie.poster_path)})`)
+    setBackgroundImage(`url(${getPosterPath("w500", movie.poster_path)})`)
   }
 
   return (

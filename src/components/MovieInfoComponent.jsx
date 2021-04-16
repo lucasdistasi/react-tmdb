@@ -8,6 +8,7 @@ import {useMovieDirectorsFetch} from "../hooks/useMovieDirectorsFetch";
 import {DirectorsGridComponent} from "./DirectorsGridComponent";
 import {ActorsGridComponent} from "./ActorsGridComponent";
 import {useMovieActorsFetch} from "../hooks/useMovieActorsFetch";
+import {getPosterPath} from "../constants/constants";
 
 export const MovieInfoComponent = () => {
 
@@ -19,11 +20,7 @@ export const MovieInfoComponent = () => {
   const {directors} = useMovieDirectorsFetch(movieId)
   const {actors} = useMovieActorsFetch(movieId)
 
-  const getBackdropPath = (size, imgUri) => {
-    return `https://image.tmdb.org/t/p/${size}/${imgUri}`
-  }
-
-  /*
+ /*
     TODO - Maybe add Similar movies => https://developers.themoviedb.org/3/movies/get-similar-movies
    */
 
@@ -43,7 +40,7 @@ export const MovieInfoComponent = () => {
         <div
           className="animate__animated animate__fadeIn animate__delay-1s parallax mid-parallax flex flex-col items-center justify-center"
           style={{
-            backgroundImage: `url(${getBackdropPath("original", backdrop_path)})`
+            backgroundImage: `url(${getPosterPath("original", backdrop_path)})`
           }}/>
         <div className="container mx-auto bg-gray-50">
           <div className="py-12">

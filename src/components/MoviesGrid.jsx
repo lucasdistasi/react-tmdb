@@ -2,13 +2,14 @@ import {MovieCardComponent} from "./MovieCardComponent";
 import {SpinnerComponent} from "./SpinnerComponent";
 import {useMovieGridFetch} from "../hooks/useMovieGridFetch"
 import {LoadMoreButtonComponent} from "./LoadMoreButtonComponent";
+import {getMovieByPage} from "../constants/constants";
 
 export const MoviesGrid = () => {
 
   const [{state, loading}, fetchData] = useMovieGridFetch()
 
   const loadMoreMovies = () => {
-    fetchData(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${state.currentPage + 1}`)
+    fetchData(getMovieByPage(state.currentPage))
   }
 
   let movies = []

@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import PropTypes from "prop-types"
+import {getMovieCredits} from "../constants/constants";
 
 export const useMovieActorsFetch = (movieId) => {
 
@@ -9,13 +10,12 @@ export const useMovieActorsFetch = (movieId) => {
   const [_error, _setError] = useState(false)
 
   useEffect(() => {
-    const URI = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
     const fetchActors = () => {
       setLoading(true)
 
       try {
         console.log(">>> Fetching actors <<<")
-        axios.get(URI)
+        axios.get(getMovieCredits(movieId))
           .then(response => {
             setActors(
               response.data.cast.filter(actor => {

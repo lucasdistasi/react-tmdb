@@ -1,6 +1,7 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
 import PropTypes from "prop-types"
+import {getMovieInfo} from "../constants/constants";
 
 export const useMovieInfoFetch = (movieId) => {
 
@@ -9,11 +10,9 @@ export const useMovieInfoFetch = (movieId) => {
     const [_error, _setError] = useState(false)
 
     const fetchMovieInfo = useCallback(async () => {
-        const URI = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
-
         try {
             setLoading(true)
-            axios.get(URI)
+            axios.get(getMovieInfo(movieId))
                 .then(response => {
                     setMovie(response.data)
                 })

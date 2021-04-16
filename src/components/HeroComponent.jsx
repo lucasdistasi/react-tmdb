@@ -2,16 +2,13 @@ import {useCallback, useEffect, useState} from 'react'
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {SpinnerComponent} from "./SpinnerComponent";
+import {HERO_URI, getPosterPath} from "../constants/constants.js"
 
 export const HeroComponent = () => {
 
   const [popularMovie, setPopularMovie] = useState({})
   const [loading, setLoading] = useState(false)
   const [_errors, _setErrors] = useState(false)
-
-  const getBackdropPath = (imgUri) => {
-    return `https://image.tmdb.org/t/p/original${imgUri}`
-  }
 
   const getRandomPage = () => {
     // Get a random page from 1 to 10
@@ -20,7 +17,7 @@ export const HeroComponent = () => {
 
   const fetchData = useCallback(() => {
     console.log(">>> Feching data <<<")
-    const URI = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${getRandomPage()}`
+    const URI = `${HERO_URI}${getRandomPage()}`
     setLoading(true)
     axios.get(URI)
       .then(response => {
@@ -49,7 +46,7 @@ export const HeroComponent = () => {
     popularMovie && !loading ?
       <div
         className="animate__animated animate__fadeIn animate__delay-1s parallax full-parallax flex flex-col items-center justify-center"
-        style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(${getBackdropPath(popularMovie.backdrop_path)})`}}>
+        style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url(${getPosterPath("original", popularMovie.backdrop_path)})`}}>
         <div className="text-center w-9/12 text-white">
           <h1 className="font-bold font-sans text-5xl uppercase">
             {

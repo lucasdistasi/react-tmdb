@@ -1,7 +1,6 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
-
-const URI = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+import {POPULAR_MOVIES} from "../constants/constants";
 
 export const useMovieGridFetch = () => {
 
@@ -36,7 +35,7 @@ export const useMovieGridFetch = () => {
   }, [])
 
   useEffect(() => {
-    fetchData(URI);
+    fetchData(POPULAR_MOVIES);
   }, [fetchData])
 
   return [{state, loading, _error}, fetchData]
