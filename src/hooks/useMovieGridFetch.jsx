@@ -5,7 +5,8 @@ const URI = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.RE
 
 export const useMovieGridFetch = () => {
 
-  const [state, setState] = useState({movies: []})
+  // Changed data type to Set because there was some duplicated movies when fetching with load more button
+  const [state, setState] = useState({movies: new Set([])})
   const [loading, setLoading] = useState(false)
   const [_error, _setError] = useState(false)
 
