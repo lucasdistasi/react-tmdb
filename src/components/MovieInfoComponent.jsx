@@ -8,11 +8,15 @@ import {useMovieDirectorsFetch} from "../hooks/useMovieDirectorsFetch";
 import {DirectorsGridComponent} from "./DirectorsGridComponent";
 import {ActorsGridComponent} from "./ActorsGridComponent";
 import {useMovieActorsFetch} from "../hooks/useMovieActorsFetch";
-import {getMovieByPage, getPosterPath} from "../constants/constants";
+import {getPosterPath} from "../constants/constants";
 import {MoviesGrid} from "./MoviesGrid";
 import {useSimilarMoviesFetch} from "../hooks/useSimilarMoviesFetch";
-import {getSimilarMovies} from "../constants/constants";
 import {useEffect} from "react";
+import {MovieGenreComponent} from "./movie/MovieGenreComponent";
+import {MovieProductionCompanies} from "./movie/MovieProductionCompanies";
+import {MovieStatus} from "./movie/MovieStatus";
+import {MovieHomePage} from "./movie/MovieHomePage";
+import {MovieTaglineComponent} from "./movie/MovieTaglineComponent";
 
 export const MovieInfoComponent = () => {
 
@@ -59,10 +63,7 @@ export const MovieInfoComponent = () => {
           <div className="py-12">
             <div className="text-center">
               <h1 className="text-7xl py-6">{title}</h1>
-              {
-                tagline &&
-                <p className="italic py-6">{tagline}</p>
-              }
+              <MovieTaglineComponent tagline={tagline}/>
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">
@@ -91,66 +92,21 @@ export const MovieInfoComponent = () => {
 
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
-              <div className="mt-10 text-center">
-                <p className="font-mono text-lg font-semibold text-gray-700">Genres</p>
-                {
-                  genres && genres.map(genre =>
-                    <p className="italic" key={genre.name}>{genre.name}</p>)
-                }
-              </div>
-              {
-                production_companies && production_companies.length > 0 &&
-                <div className="mt-10 text-center">
-                  <p className="font-mono text-lg font-semibold text-gray-700">Production Companies</p>
-                  {
-                    production_companies.map(company =>
-                      <p className="italic" key={company.name}>{company.name}</p>)
-                  }
-                </div>
-              }
-              <div className="mt-10 text-center">
-                <p className="font-mono text-lg font-semibold text-gray-700">Movie Status</p>
-                {
-                  <p className="italic">{status}</p>
-                }
-              </div>
-              {
-                homepage && <div className="mt-10 text-center">
-                  <p className="font-mono text-lg font-semibold text-gray-700">Movie Site</p>
-                  <a href={homepage} className="text-blue-600 hover:underline" target="_blank"
-                     rel="noreferrer">{title}</a>
-                </div>
-              }
+              <MovieGenreComponent genres={genres}/>
+              <MovieProductionCompanies productionCompanies={production_companies}/>
+              <MovieStatus status={status}/>
+              <MovieHomePage homepage={homepage} title={title}/>
             </div>
           </div>
 
-          {
-            directors.length > 0 &&
-            <>
-              <h1 className="text-center text-4xl py-6">Directors</h1>
-              <div className="flex flex-col lg:flex-row lg:flex-wrap items-center lg:justify-center py-5">
-                <DirectorsGridComponent directors={directors}/>
-              </div>
-            </>
-          }
+          <DirectorsGridComponent directors={directors}/>
+          <ActorsGridComponent actors={actors}/>
 
-          {
-            actors.length > 0 &&
-            <>
-              <h1 className="text-center text-4xl py-6">Popular Actors / Actresses</h1>
-              <div className="flex flex-col lg:flex-row lg:flex-wrap items-center lg:justify-center py-5">
-                <ActorsGridComponent actors={actors}/>
-              </div>
-            </>
-          }
-
-          {
-            <MoviesGrid movies={state.movies}
-                        isLoading={similarMoviesLoading}
-                        currentPage={state.currentPage}
-                        totalPages={state.totalPages}
-                        title="Similar Movies"/>
-          }
+          <MoviesGrid movies={state.movies}
+                      isLoading={similarMoviesLoading}
+                      currentPage={state.currentPage}
+                      totalPages={state.totalPages}
+                      title="Similar Movies"/>
         </div>
       </div>
   )
