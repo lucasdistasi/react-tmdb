@@ -8,7 +8,11 @@ import {useMovieDirectorsFetch} from "../hooks/useMovieDirectorsFetch";
 import {DirectorsGridComponent} from "./DirectorsGridComponent";
 import {ActorsGridComponent} from "./ActorsGridComponent";
 import {useMovieActorsFetch} from "../hooks/useMovieActorsFetch";
-import {getPosterPath} from "../constants/constants";
+import {getMovieByPage, getPosterPath} from "../constants/constants";
+import {MoviesGrid} from "./MoviesGrid";
+import {useSimilarMoviesFetch} from "../hooks/useSimilarMoviesFetch";
+import {getSimilarMovies} from "../constants/constants";
+import {useEffect} from "react";
 
 export const MovieInfoComponent = () => {
 
@@ -19,10 +23,7 @@ export const MovieInfoComponent = () => {
   }, loading, _error] = useMovieInfoFetch(movieId)
   const {directors} = useMovieDirectorsFetch(movieId)
   const {actors} = useMovieActorsFetch(movieId)
-
- /*
-    TODO - Maybe add Similar movies => https://developers.themoviedb.org/3/movies/get-similar-movies
-   */
+  const [{state, similarMoviesLoading}] = useSimilarMoviesFetch(movieId)
 
   const hours = Math.floor(runtime / 60)
   const minutes = runtime % 60
@@ -32,6 +33,18 @@ export const MovieInfoComponent = () => {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 0
+  })
+
+  const scrollToTop = () => {
+    const position = document.documentElement.scrollTop || document.body.scrollTop;
+    if (position > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      window.scrollTo(0, position - position / 80);
+    }
+  }
+
+  useEffect(() => {
+    scrollToTop()
   })
 
   return (
@@ -87,13 +100,13 @@ export const MovieInfoComponent = () => {
               </div>
               {
                 production_companies && production_companies.length > 0 &&
-                  <div className="mt-10 text-center">
-                    <p className="font-mono text-lg font-semibold text-gray-700">Production Companies</p>
-                    {
-                      production_companies.map(company =>
-                        <p className="italic" key={company.name}>{company.name}</p>)
-                    }
-                  </div>
+                <div className="mt-10 text-center">
+                  <p className="font-mono text-lg font-semibold text-gray-700">Production Companies</p>
+                  {
+                    production_companies.map(company =>
+                      <p className="italic" key={company.name}>{company.name}</p>)
+                  }
+                </div>
               }
               <div className="mt-10 text-center">
                 <p className="font-mono text-lg font-semibold text-gray-700">Movie Status</p>
@@ -129,6 +142,14 @@ export const MovieInfoComponent = () => {
                 <ActorsGridComponent actors={actors}/>
               </div>
             </>
+          }
+
+          {
+            <MoviesGrid movies={state.movies}
+                        isLoading={similarMoviesLoading}
+                        currentPage={state.currentPage}
+                        totalPages={state.totalPages}
+                        title="Similar Movies"/>
           }
         </div>
       </div>

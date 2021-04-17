@@ -17,3 +17,7 @@ export const getMovieInfo = (movieId) => {
 export const getMovieByPage = (currentPage) => {
   return `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${currentPage + 1}`
 }
+
+export const getSimilarMovies = (movieId) => {
+  return `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+}
