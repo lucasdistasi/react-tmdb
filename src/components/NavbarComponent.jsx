@@ -10,7 +10,7 @@ export const NavbarComponent = () => {
   }
 
   const itIsCurrentPath = (path) => {
-    return window.location.pathname.includes(path)
+    return window.location.pathname === path
   }
 
   return (
@@ -35,8 +35,9 @@ export const NavbarComponent = () => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
+
                 {
-                  itIsCurrentPath("home") || itIsCurrentPath("index") ?
+                  itIsCurrentPath("/home") || itIsCurrentPath("/index") ?
                     <Link to="/home" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
                       Home
                     </Link>
@@ -45,6 +46,18 @@ export const NavbarComponent = () => {
                       Home
                     </Link>
                 }
+
+                {
+                  itIsCurrentPath("/shows") ?
+                    <Link to="/shows" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                      Shows
+                    </Link>
+                    :
+                    <Link to="/shows" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                      Shows
+                    </Link>
+                }
+
               </div>
             </div>
           </div>
@@ -54,13 +67,23 @@ export const NavbarComponent = () => {
       <div className={navbarStatus} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 flex flex-col justify-center text-center">
           {
-            itIsCurrentPath("home") || itIsCurrentPath("index") ?
+            itIsCurrentPath("/home") || itIsCurrentPath("/index") ?
               <Link to="/home" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
                 Home
               </Link>
               :
               <Link to="/home" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Home
+              </Link>
+          }
+          {
+            itIsCurrentPath("/shows") ?
+              <Link to="/shows" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                Home
+              </Link>
+              :
+              <Link to="/shows" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Shows
               </Link>
           }
         </div>

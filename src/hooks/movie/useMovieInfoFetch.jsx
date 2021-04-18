@@ -1,7 +1,7 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
 import PropTypes from "prop-types"
-import {getMovieInfo} from "../constants/constants";
+import {getMovieInfo} from "../../constants/constants";
 
 export const useMovieInfoFetch = (movieId) => {
 

@@ -1,4 +1,4 @@
-export const MovieGenreComponent = ({genres}) => {
+export const GenreComponent = ({genres}) => {
 
   return (
     genres ?

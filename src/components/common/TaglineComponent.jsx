@@ -1,4 +1,4 @@
-export const MovieTaglineComponent = ({tagline}) => {
+export const TaglineComponent = ({tagline}) => {
 
   return (
     tagline ?

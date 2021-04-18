@@ -1,4 +1,4 @@
-export const MovieProductionCompanies = ({productionCompanies}) => {
+export const ProductionCompaniesComponent = ({productionCompanies}) => {
 
   return (
     productionCompanies && productionCompanies.length > 0 ?

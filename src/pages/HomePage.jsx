@@ -1,23 +1,24 @@
 import {NavbarComponent} from "../components/NavbarComponent";
 import {HeroComponent} from "../components/HeroComponent";
-import {MoviesGrid} from "../components/MoviesGrid";
+import {CatalogueGrid} from "../components/common/CatalogueGrid";
 import {FooterComponent} from "../components/FooterComponent";
 import {ErrorComponent} from "../components/ErrorComponent";
-import {useMovieGridFetch} from "../hooks/useMovieGridFetch"
+import {useElementGridFetch} from "../hooks/common/useElementGridFetch"
 import {getMovieByPage} from "../constants/constants";
+import {POPULAR_MOVIES} from "../constants/constants";
 
 export const HomePage = () => {
 
-  const [{state, loading, _error}, fetchData] = useMovieGridFetch()
+  const [{state, loading, _error}, fetchData] = useElementGridFetch(POPULAR_MOVIES)
 
   const loadMoreMovies = () => {
     fetchData(getMovieByPage(state.currentPage))
   }
 
-  let movies = []
-  state.movies.forEach(movie => {
-    movies.push(movie)
-  })
+  // This is a tweak to remove duplicated movies, beacuse in some cases
+  // TMBD might return the same movie in multiple pages
+  let movies = state.elements.map(movie => movie.id)
+  let filteredMovies = state.elements.filter(({id}, index) => !movies.includes(id, index + 1))
 
   return (
     <>
@@ -27,12 +28,13 @@ export const HomePage = () => {
         _error ? <ErrorComponent/> :
           <>
             <HeroComponent/>
-            <MoviesGrid movies={movies}
-                        loadMoreFunction={loadMoreMovies}
-                        isLoading={loading}
-                        currentPage={state.currentPage}
-                        totalPages={state.totalPages}
-                        title="Popular Movies"/>
+            <CatalogueGrid elements={filteredMovies}
+                           loadMoreFunction={loadMoreMovies}
+                           isLoading={loading}
+                           currentPage={state.currentPage}
+                           totalPages={state.totalPages}
+                           title="Popular Movies"
+                           elementType="movies"/>
           </>
       }
 

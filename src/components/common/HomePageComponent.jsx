@@ -1,4 +1,4 @@
-export const MovieHomePage = ({homepage, title}) => {
+export const HomePageComponent = ({homepage, title}) => {
 
   return (
     homepage ?

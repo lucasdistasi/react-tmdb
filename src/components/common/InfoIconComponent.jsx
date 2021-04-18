@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types"
 
-export const MovieInfoIconComponent = ({info, icon, color, title}) => {
+export const InfoIconComponent = ({info, icon, color, title}) => {
 
   return (
     <div className="flex flex-col items-center text-center text-center my-5 ">
@@ -18,7 +18,7 @@ export const MovieInfoIconComponent = ({info, icon, color, title}) => {
   )
 }
 
-MovieInfoIconComponent.prototype = {
+InfoIconComponent.prototype = {
   info: PropTypes.string,
   icon: PropTypes.string,
   color: PropTypes.string,

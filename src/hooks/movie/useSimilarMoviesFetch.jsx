@@ -1,6 +1,6 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
-import {getSimilarMovies} from "../constants/constants";
+import {getSimilarMovies} from "../../constants/constants";
 
 export const useSimilarMoviesFetch = (movieId) => {
 
@@ -13,7 +13,6 @@ export const useSimilarMoviesFetch = (movieId) => {
     setSimilarMoviesLoading(true)
 
     try {
-      console.log(endpoint)
       await axios.get(endpoint)
         .then(response => {
           console.log(response)
@@ -33,7 +32,7 @@ export const useSimilarMoviesFetch = (movieId) => {
 
   useEffect(() => {
     fetchSimilarMovies(getSimilarMovies(movieId));
-  }, [fetchSimilarMovies])
+  }, [fetchSimilarMovies, movieId])
 
   return [{state, similarMoviesLoading, _error}, fetchSimilarMovies]
 }

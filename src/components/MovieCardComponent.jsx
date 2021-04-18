@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import PropTypes from "prop-types"
 import {getPosterPath} from "../constants/constants";
 
-export const MovieCardComponent = ({movie}) => {
+export const MovieCardComponent = ({movie, elementType}) => {
 
   const [backgroundImage, setBackgroundImage] = useState(`url(${getPosterPath("w500", movie.poster_path)})`)
 
@@ -16,7 +16,7 @@ export const MovieCardComponent = ({movie}) => {
   }
 
   return (
-    <Link to={`/movies/${movie.id}`}
+    <Link to={`/${elementType}/${movie.id}`}
           className="mx-10 my-8 rounded shadow-md card-movie rounded-3xl poster-hover-transition flex justify-center items-end animate__animated animate__fadeIn"
           style={{
             backgroundImage: backgroundImage
@@ -27,5 +27,6 @@ export const MovieCardComponent = ({movie}) => {
 }
 
 MovieCardComponent.prototype = {
-  movies: PropTypes.object
+  movies: PropTypes.object,
+  elementType: PropTypes.string
 }
