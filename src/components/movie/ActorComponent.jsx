@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import {getPosterPath} from "../constants/constants";
+import {getPosterPath} from "../../constants/constants";
 
 export const ActorComponent = ({actor}) => {
 

@@ -1,5 +1,5 @@
-import {NavbarComponent} from "../components/NavbarComponent";
-import {FooterComponent} from "../components/FooterComponent";
+import {NavbarComponent} from "../components/page/NavbarComponent";
+import {FooterComponent} from "../components/page/FooterComponent";
 import {CatalogueGrid} from "../components/common/CatalogueGrid";
 import {useElementGridFetch} from "../hooks/common/useElementGridFetch";
 import {getShowByPage} from "../constants/constants";

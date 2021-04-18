@@ -1,5 +1,5 @@
-import {NavbarComponent} from "../components/NavbarComponent";
-import {FooterComponent} from "../components/FooterComponent";
+import {NavbarComponent} from "../components/page/NavbarComponent";
+import {FooterComponent} from "../components/page/FooterComponent";
 import {MovieInfoComponent} from "../components/movie/MovieInfoComponent";
 import {useEffect} from "react";
 

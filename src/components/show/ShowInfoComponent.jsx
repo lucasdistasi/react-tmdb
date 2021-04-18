@@ -1,8 +1,8 @@
 import {useParams} from "react-router-dom";
 import {useShowInfoFetch} from "../../hooks/show/useShowInfoFetch";
 import {getPosterPath} from "../../constants/constants";
-import {ErrorComponent} from "../ErrorComponent";
-import {SpinnerComponent} from "../SpinnerComponent";
+import {ErrorComponent} from "../page/ErrorComponent";
+import {SpinnerComponent} from "../page/SpinnerComponent";
 import {TaglineComponent} from "../common/TaglineComponent";
 import {InfoIconComponent} from "../common/InfoIconComponent";
 import {faCalendarAlt, faVideo, faFilm, faStar} from "@fortawesome/free-solid-svg-icons";
@@ -10,8 +10,9 @@ import {GenreComponent} from "../common/GenreComponent";
 import {ProductionCompaniesComponent} from "../common/ProductionCompaniesComponent";
 import {StatusComponent} from "../common/StatusComponent";
 import {HomePageComponent} from "../common/HomePageComponent";
-import {DirectorsGridComponent} from "../DirectorsGridComponent";
+import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
 import {SeasonsTableComponent} from "./SeasonsTableComponent";
+import {NetworkGridComponent} from "./NetworkGridComponent";
 
 export const ShowInfoComponent = () => {
 
@@ -76,8 +77,8 @@ export const ShowInfoComponent = () => {
           </div>
 
           <DirectorsGridComponent directors={created_by} title={"Created by"}/>
-          <DirectorsGridComponent directors={networks} title={"Networks"}/>
-          <DirectorsGridComponent directors={production_companies} title={"Production Companies"}/>
+          <NetworkGridComponent networks={networks} title={"Networks"}/>
+          <NetworkGridComponent networks={production_companies} title={"Production Companies"}/>
 
           {
             // season 0 usually means specials episodes.

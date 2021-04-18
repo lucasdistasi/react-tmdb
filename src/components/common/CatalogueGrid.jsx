@@ -1,6 +1,6 @@
-import {MovieCardComponent} from "../MovieCardComponent";
-import {SpinnerComponent} from "../SpinnerComponent";
-import {LoadMoreButtonComponent} from "../LoadMoreButtonComponent";
+import {ElementCardComponent} from "./ElementCardComponent";
+import {SpinnerComponent} from "../page/SpinnerComponent";
+import {LoadMoreButtonComponent} from "../page/LoadMoreButtonComponent";
 
 export const CatalogueGrid = ({elements, loadMoreFunction, isLoading, currentPage, totalPages, title, elementType}) => {
 
@@ -13,7 +13,7 @@ export const CatalogueGrid = ({elements, loadMoreFunction, isLoading, currentPag
       <div className="mx-auto flex justify-center flex-wrap mb-12 animate__animated animate__fadeIn">
         {
           elements.map(movie => {
-            return <MovieCardComponent movie={movie} elementType={elementType} key={movie.id}/>
+            return <ElementCardComponent movie={movie} elementType={elementType} key={movie.id}/>
           })
         }
       </div>

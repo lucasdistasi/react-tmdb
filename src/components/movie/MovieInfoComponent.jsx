@@ -2,11 +2,11 @@ import {useMovieInfoFetch} from "../../hooks/movie/useMovieInfoFetch";
 import {useParams} from "react-router-dom";
 import {faStar, faDollarSign, faClock, faCalendarAlt, faMoneyBillWave} from '@fortawesome/free-solid-svg-icons'
 import {InfoIconComponent} from "../common/InfoIconComponent";
-import {SpinnerComponent} from "../SpinnerComponent";
-import {ErrorComponent} from "../ErrorComponent";
+import {SpinnerComponent} from "../page/SpinnerComponent";
+import {ErrorComponent} from "../page/ErrorComponent";
 import {useMovieDirectorsFetch} from "../../hooks/movie/useMovieDirectorsFetch";
-import {DirectorsGridComponent} from "../DirectorsGridComponent";
-import {ActorsGridComponent} from "../ActorsGridComponent";
+import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
+import {ActorsGridComponent} from "./ActorsGridComponent";
 import {useMovieActorsFetch} from "../../hooks/movie/useMovieActorsFetch";
 import {getPosterPath} from "../../constants/constants";
 import {CatalogueGrid} from "../common/CatalogueGrid";

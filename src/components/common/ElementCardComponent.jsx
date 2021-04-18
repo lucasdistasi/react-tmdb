@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {Link} from 'react-router-dom'
 import PropTypes from "prop-types"
-import {getPosterPath} from "../constants/constants";
+import {getPosterPath} from "../../constants/constants";
 
-export const MovieCardComponent = ({movie, elementType}) => {
+export const ElementCardComponent = ({movie, elementType}) => {
 
   const [backgroundImage, setBackgroundImage] = useState(`url(${getPosterPath("w500", movie.poster_path)})`)
 
@@ -26,7 +26,7 @@ export const MovieCardComponent = ({movie, elementType}) => {
   )
 }
 
-MovieCardComponent.prototype = {
+ElementCardComponent.prototype = {
   movies: PropTypes.object,
   elementType: PropTypes.string
 }

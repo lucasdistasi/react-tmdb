@@ -1,5 +1,3 @@
-import {useShowEpisodeFetch} from "../../hooks/show/useShowEpisodeFetch";
-
 export const ShowEpisodeRowComponent = ({episodeNumber, episodeName, airDate, voteAverage}) => {
 
   return (

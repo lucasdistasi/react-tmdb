@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from 'react'
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {SpinnerComponent} from "./SpinnerComponent";
-import {HERO_URI, getPosterPath} from "../constants/constants.js"
+import {HERO_URI, getPosterPath} from "../../constants/constants.js"
 
 export const HeroComponent = () => {
 
