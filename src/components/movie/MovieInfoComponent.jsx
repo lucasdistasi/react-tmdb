@@ -17,7 +17,6 @@ import {ProductionCompaniesComponent} from "../common/ProductionCompaniesCompone
 import {StatusComponent} from "../common/StatusComponent";
 import {HomePageComponent} from "../common/HomePageComponent";
 import {TaglineComponent} from "../common/TaglineComponent";
-import {SeasonsTableComponent} from "../show/SeasonsTableComponent";
 
 export const MovieInfoComponent = () => {
 

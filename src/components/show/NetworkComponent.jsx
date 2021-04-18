@@ -2,8 +2,6 @@ import {getPosterPath} from "../../constants/constants";
 
 export const NetworkComponent = ({network}) => {
 
-  console.log(network)
-
   return (
     <div className="my-5 mx-5 border-2 border-indigo-500 w-36 h-36 shadow-lg flex justify-center rounded-2xl">
       {

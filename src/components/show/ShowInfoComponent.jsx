@@ -11,8 +11,8 @@ import {ProductionCompaniesComponent} from "../common/ProductionCompaniesCompone
 import {StatusComponent} from "../common/StatusComponent";
 import {HomePageComponent} from "../common/HomePageComponent";
 import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
-import {SeasonsTableComponent} from "./SeasonsTableComponent";
 import {NetworkGridComponent} from "./NetworkGridComponent";
+import {SeasonAccordionComponent} from "./SeasonAccordionComponent";
 
 export const ShowInfoComponent = () => {
 
@@ -81,10 +81,7 @@ export const ShowInfoComponent = () => {
           <NetworkGridComponent networks={production_companies} title={"Production Companies"}/>
 
           {
-            // season 0 usually means specials episodes.
-            // We are going to display only the 'original' ones
-            seasons && seasons.filter(season => season.season_number > 0)
-              .map(season => <SeasonsTableComponent key={season.season_number} season={season} showId={showId}/>)
+            seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} />
           }
 
         </div>

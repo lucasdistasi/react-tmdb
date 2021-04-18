@@ -99,3 +99,63 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/*
+  [ ACCORDION ]
+*/
+
+/* Tab content - closed */
+.tab-content {
+  max-height: 0;
+  -moz-transition: max-height 0.40s;
+  -webkit-transition: max-height 0.40s;
+  -o-transition: max-height 0.40s;
+  transition: max-height 0.40s;
+}
+
+/* :checked - resize to full height */
+.tab input:checked ~ .tab-content {
+  max-height: 1000vh;
+}
+
+/* Label formatting when open */
+.tab input:checked + label {
+  /*@apply text-xl p-5 border-l-2 border-indigo-500 bg-gray-100 text-indigo*/
+  padding: 1.25rem; /*.p-5*/
+  border-color: #04b4e4; /*.border-indigo*/
+  background-color: #d3efe9; /*.bg-gray-100 */
+  color: #073741;
+}
+
+/* Icon */
+.tab label::after {
+  float: right;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  text-align: center;
+  -webkit-transition: all 0.40s;
+  -moz-transition: all 0.40s;
+  -o-transition: all 0.40s;
+  transition: all 0.40s;
+}
+
+/* Icon formatting - closed */
+.tab input[type=checkbox] + label::after {
+  content: "+";
+  font-weight: bold; /*.font-bold*/
+  border-width: 1px; /*.border*/
+  border-radius: 9999px; /*.rounded-full */
+  border-color: #b8c2cc; /*.border-grey*/
+}
+
+/* Icon formatting - open */
+.tab input[type=checkbox]:checked + label::after {
+  transform: rotate(45deg);
+  background-color: #6574cd; /*.bg-indigo*/
+  color: #f8fafc; /*.text-grey-lightest*/
+}

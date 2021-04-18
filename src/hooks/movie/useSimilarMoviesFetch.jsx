@@ -15,7 +15,6 @@ export const useSimilarMoviesFetch = (movieId) => {
     try {
       await axios.get(endpoint)
         .then(response => {
-          console.log(response)
           setState(() => ({
             movies: [...response.data.results],
             currentPage: response.data.page,

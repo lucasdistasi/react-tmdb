@@ -5,16 +5,19 @@ import axios from "axios";
 export const useShowEpisodeFetch = ({showId, seasonNumber}) => {
 
   const [episodes, setEpisodes] = useState({})
+  const [loading, setLoading] = useState(false)
   const [_error, _setError] = useState(false)
 
   const fetchEpisodeInfo = useCallback(() => {
-    //console.log("fetching info from showId " + showId + " and season " + seasonNumber)
     try {
+      setLoading(true)
      axios.get(getShowEpisodesInfo(showId, seasonNumber))
        .then(response => setEpisodes(response.data.episodes))
     } catch (error) {
       console.log(error)
       _setError(true)
+    } finally {
+      setLoading(false)
     }
   }, [showId, seasonNumber])
 
@@ -22,5 +25,5 @@ export const useShowEpisodeFetch = ({showId, seasonNumber}) => {
     fetchEpisodeInfo()
   }, [fetchEpisodeInfo])
 
-  return [episodes, _error]
+  return [episodes, loading, _error]
 }
