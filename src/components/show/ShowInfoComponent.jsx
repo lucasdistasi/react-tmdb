@@ -81,7 +81,7 @@ export const ShowInfoComponent = () => {
           <NetworkGridComponent networks={production_companies} title={"Production Companies"}/>
 
           {
-            seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} />
+            seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} originalPoster={backdrop_path}/>
           }
 
         </div>

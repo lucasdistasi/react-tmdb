@@ -18,6 +18,10 @@
   background-color: #004052;
 }
 
+.tmdb-light-green-border {
+  border-color: #94dcd2;
+}
+
 .parallax {
   background-color: wheat;
   background-attachment: fixed;

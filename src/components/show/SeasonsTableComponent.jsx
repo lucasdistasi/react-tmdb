@@ -6,7 +6,6 @@ import {SpinnerComponent} from "../page/SpinnerComponent";
 export const SeasonsTableComponent = ({season, showId}) => {
 
   let seasonNumber = season.season_number
-  console.log("season >>> " + seasonNumber + " showId >>> " + showId)
 
   const [episodes, loading, _error] = useShowEpisodeFetch({showId, seasonNumber})
 
@@ -28,8 +27,6 @@ export const SeasonsTableComponent = ({season, showId}) => {
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-
-
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                   <tr>
@@ -52,8 +49,6 @@ export const SeasonsTableComponent = ({season, showId}) => {
                   </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-
-
                   {
                     episodes.length > 0 &&
                     episodes.map((episode, seasonNumber) => {
@@ -65,11 +60,8 @@ export const SeasonsTableComponent = ({season, showId}) => {
                         voteAverage={episode.vote_average} />
                     })
                   }
-
-
                   </tbody>
                 </table>
-
               </div>
             </div>
           </div>
