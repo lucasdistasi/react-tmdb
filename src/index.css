@@ -76,6 +76,10 @@ body {
   animation-delay: 0.5s
 }
 
+.hover-row:hover {
+  background-color: #f1fdff;
+}
+
 /*
  [ SPINNER ]
  */

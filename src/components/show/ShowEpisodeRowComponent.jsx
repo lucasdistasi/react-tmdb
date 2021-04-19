@@ -4,7 +4,7 @@ import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 export const ShowEpisodeRowComponent = ({episodeNumber, episodeName, airDate, voteAverage}) => {
 
   return (
-    <tr>
+    <tr className="hover-row">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
           <div className="ml-4">
