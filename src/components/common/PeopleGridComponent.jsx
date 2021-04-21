@@ -18,7 +18,7 @@ export const PeopleGridComponent = ({people, title, loadMoreFunction, isLoading,
         }
         {
           people.map(person =>
-            <PersonComponent person={person} />
+            <PersonComponent person={person} key={person.id} />
           )
         }
       </div>

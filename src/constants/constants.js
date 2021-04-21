@@ -47,3 +47,10 @@ export const search = (isAdultSearch = false, chosenCriteria = "movie", name) =>
 export const searchByPage = (isAdultSearch = false, chosenCriteria = "movie", name, currentPage) => {
   return `https://api.themoviedb.org/3/search/${chosenCriteria}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${currentPage + 1}&include_adult=${isAdultSearch}&query=${name}`
 }
+
+// This is a tweak to remove duplicated elements, beacuse in some cases
+// TMBD might return the same movie/show/person in multiple pages
+export const filterDuplicatedElements = (elements) => {
+  let allElements = elements.map(element => element.id)
+  return elements.filter(({id}, index) => !allElements.includes(id, index + 1))
+}

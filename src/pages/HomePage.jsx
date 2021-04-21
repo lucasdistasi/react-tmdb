@@ -6,6 +6,7 @@ import {ErrorComponent} from "../components/page/ErrorComponent";
 import {useElementGridFetch} from "../hooks/common/useElementGridFetch"
 import {getMovieByPage} from "../constants/constants";
 import {POPULAR_MOVIES} from "../constants/constants";
+import {filterDuplicatedElements} from "../constants/constants";
 
 export const HomePage = () => {
 
@@ -15,20 +16,14 @@ export const HomePage = () => {
     fetchData(getMovieByPage(state.currentPage))
   }
 
-  // This is a tweak to remove duplicated movies, beacuse in some cases
-  // TMBD might return the same movie in multiple pages
-  let movies = state.elements.map(movie => movie.id)
-  let filteredMovies = state.elements.filter(({id}, index) => !movies.includes(id, index + 1))
-
   return (
     <>
       <NavbarComponent/>
-
       {
         _error ? <ErrorComponent/> :
           <>
             <HeroComponent/>
-            <CatalogueGrid elements={filteredMovies}
+            <CatalogueGrid elements={filterDuplicatedElements(state.elements)}
                            loadMoreFunction={loadMoreMovies}
                            isLoading={loading}
                            currentPage={state.currentPage}
@@ -37,7 +32,6 @@ export const HomePage = () => {
                            elementType="movies"/>
           </>
       }
-
       <FooterComponent/>
     </>
   )

@@ -10,15 +10,14 @@ import {NoResultsComponent} from "./NoResultsComponent";
 import {CatalogueGrid} from "../common/CatalogueGrid";
 import {search, searchByPage} from "../../constants/constants";
 import {PeopleGridComponent} from "../common/PeopleGridComponent";
+import {filterDuplicatedElements} from "../../constants/constants";
 
 export const SearchFormComponent = () => {
 
   /*
       TODO
        - Test the search functionality.
-       - Add default photo for actors without a picture
-       - Some shows - actors are duplicated. Make a filter
-       - Maybe add an Actors / Director page to dispaly information about the person and his/her best movies
+       - Maybe add an Actors / Director page to display information about the person and his/her best movies.
    */
 
   // We need to save in the state if the user has made at least 1 search
@@ -115,7 +114,7 @@ export const SearchFormComponent = () => {
         searchCriteria === "person" ?
 
           <PeopleGridComponent
-            people={searchResults}
+            people={filterDuplicatedElements(searchResults)}
             title={"Search results"}
             loadMoreFunction={() => fetchSearchData(true)}
             isLoading={loading}
@@ -123,7 +122,7 @@ export const SearchFormComponent = () => {
             totalPages={data.totalPages}/> :
 
           <CatalogueGrid
-            elements={searchResults}
+            elements={filterDuplicatedElements(searchResults)}
             loadMoreFunction={() => fetchSearchData(true)}
             isLoading={loading}
             currentPage={data.currentPage}
