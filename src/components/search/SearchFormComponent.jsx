@@ -9,14 +9,16 @@ import {ErrorComponent} from "../page/ErrorComponent";
 import {NoResultsComponent} from "./NoResultsComponent";
 import {CatalogueGrid} from "../common/CatalogueGrid";
 import {search, searchByPage} from "../../constants/constants";
-import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
+import {PeopleGridComponent} from "../common/PeopleGridComponent";
 
 export const SearchFormComponent = () => {
 
   /*
       TODO
-       - Add load more button for actors.
        - Test the search functionality.
+       - Add default photo for actors without a picture
+       - Some shows - actors are duplicated. Make a filter
+       - Maybe add an Actors / Director page to dispaly information about the person and his/her best movies
    */
 
   // We need to save in the state if the user has made at least 1 search
@@ -106,12 +108,20 @@ export const SearchFormComponent = () => {
         data && data.elements && data.elements.forEach(elements => elements.forEach(element => searchResults.push(element)))
       }
       {
-        didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent />
+        didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent/>
       }
       {
         didSearch && searchResults && searchResults.length > 0 &&
         searchCriteria === "person" ?
-          <DirectorsGridComponent directors={searchResults} title={"Search results"} /> :
+
+          <PeopleGridComponent
+            people={searchResults}
+            title={"Search results"}
+            loadMoreFunction={() => fetchSearchData(true)}
+            isLoading={loading}
+            currentPage={data.currentPage}
+            totalPages={data.totalPages}/> :
+
           <CatalogueGrid
             elements={searchResults}
             loadMoreFunction={() => fetchSearchData(true)}

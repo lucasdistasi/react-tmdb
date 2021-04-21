@@ -5,8 +5,6 @@ import {InfoIconComponent} from "../common/InfoIconComponent";
 import {SpinnerComponent} from "../page/SpinnerComponent";
 import {ErrorComponent} from "../page/ErrorComponent";
 import {useMovieDirectorsFetch} from "../../hooks/movie/useMovieDirectorsFetch";
-import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
-import {ActorsGridComponent} from "./ActorsGridComponent";
 import {useMovieActorsFetch} from "../../hooks/movie/useMovieActorsFetch";
 import {getPosterPath} from "../../constants/constants";
 import {CatalogueGrid} from "../common/CatalogueGrid";
@@ -18,6 +16,7 @@ import {StatusComponent} from "../common/StatusComponent";
 import {HomePageComponent} from "../common/HomePageComponent";
 import {TaglineComponent} from "../common/TaglineComponent";
 import {NO_POSTER} from "../../constants/constants";
+import {PeopleGridComponent} from "../common/PeopleGridComponent";
 
 export const MovieInfoComponent = () => {
 
@@ -58,7 +57,7 @@ export const MovieInfoComponent = () => {
         <div
           className="animate__animated animate__fadeIn animate__delay-1s parallax mid-parallax flex flex-col items-center justify-center"
           style={{
-            backgroundImage: `url(${backdrop_path ? 
+            backgroundImage: `url(${backdrop_path ?
               getPosterPath("original", backdrop_path) :
               NO_POSTER})`
           }}/>
@@ -96,7 +95,7 @@ export const MovieInfoComponent = () => {
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
               {
-                genres.length > 0 && <GenreComponent genres={genres}/>
+                genres && genres.length > 0 && <GenreComponent genres={genres}/>
               }
               <ProductionCompaniesComponent productionCompanies={production_companies}/>
               <StatusComponent status={status}/>
@@ -104,8 +103,21 @@ export const MovieInfoComponent = () => {
             </div>
           </div>
 
-          <DirectorsGridComponent directors={directors} title={"Directors"}/>
-          <ActorsGridComponent actors={actors}/>
+          <PeopleGridComponent
+            people={directors}
+            title={"Directors"}
+            loadMoreFunction={null}
+            isLoading={loading}
+            currentPage={0}
+            totalPages={0}/>
+
+          <PeopleGridComponent
+            people={actors}
+            title={"Popular Actors / Actresses"}
+            loadMoreFunction={null}
+            isLoading={loading}
+            currentPage={0}
+            totalPages={0}/>
 
           <CatalogueGrid elements={state.movies}
                          isLoading={similarMoviesLoading}

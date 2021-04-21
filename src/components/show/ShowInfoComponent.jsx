@@ -10,9 +10,9 @@ import {GenreComponent} from "../common/GenreComponent";
 import {ProductionCompaniesComponent} from "../common/ProductionCompaniesComponent";
 import {StatusComponent} from "../common/StatusComponent";
 import {HomePageComponent} from "../common/HomePageComponent";
-import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
 import {NetworkGridComponent} from "./NetworkGridComponent";
 import {SeasonAccordionComponent} from "./SeasonAccordionComponent";
+import {PeopleGridComponent} from "../common/PeopleGridComponent";
 
 export const ShowInfoComponent = () => {
 
@@ -72,7 +72,7 @@ export const ShowInfoComponent = () => {
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
               {
-                genres.length > 0 && <GenreComponent genres={genres}/>
+                genres && genres.length > 0 && <GenreComponent genres={genres}/>
               }
               <ProductionCompaniesComponent productionCompanies={production_companies}/>
               <StatusComponent status={status}/>
@@ -80,9 +80,19 @@ export const ShowInfoComponent = () => {
             </div>
           </div>
 
-          <DirectorsGridComponent directors={created_by} title={"Created by"}/>
-          <NetworkGridComponent networks={networks} title={"Networks"}/>
-          <NetworkGridComponent networks={production_companies} title={"Production Companies"}/>
+          <PeopleGridComponent
+            people={created_by}
+            title={"Created by"}
+            loadMoreFunction={null}
+            isLoading={loading}
+            currentPage={0}
+            totalPages={0}/>
+
+          <NetworkGridComponent networks={networks}
+                                title={"Networks"}/>
+
+          <NetworkGridComponent networks={production_companies}
+                                title={"Production Companies"}/>
 
           {
             seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} originalPoster={backdrop_path}/>

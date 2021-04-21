@@ -74,10 +74,10 @@ body {
 }
 
 .btn-more-info:hover {
-  background-color: #94dcd2;
-  color: black;
-  border-width: 1px;
-  border-color: transparent;
+  background-color: #94dcd2 !important;
+  color: black !important;
+  border-width: 1px !important;
+  border-color: transparent !important;
 }
 
 .animate__animated.animate__delay-05s {

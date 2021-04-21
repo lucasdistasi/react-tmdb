@@ -4,7 +4,7 @@ export const NotFoundComponent = () => {
 
   return (
     <div className="bg-indigo-900 relative overflow-hidden h-screen">
-      <img src="https://www.tailwind-kit.com/images/landscape/8.svg" className="absolute h-full w-full object-cover" alt="Not found background image"/>
+      <img src="https://www.tailwind-kit.com/images/landscape/8.svg" className="absolute h-full w-full object-cover" alt="Not found background"/>
       <div className="inset-0 bg-black opacity-25 absolute">
       </div>
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">

@@ -6,6 +6,8 @@ export const POPULAR_SHOWS = ` https://api.themoviedb.org/3/tv/popular?api_key=$
 
 export const NO_POSTER = `${process.env.PUBLIC_URL}/no-poster-light.jpg`
 
+export const PERSON_WITHOUT_IMAGE = `${process.env.PUBLIC_URL}/person-without-image.jpg`
+
 export const getPosterPath = (size, imgUri) => {
   return `https://image.tmdb.org/t/p/${size}${imgUri}`
 }

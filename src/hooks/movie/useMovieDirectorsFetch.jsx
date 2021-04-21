@@ -18,8 +18,10 @@ export const useMovieDirectorsFetch = (movieId) => {
         .then(response => {
           setDirectors(
             response.data.crew.filter(director => {
-              return director.department.includes("Directing") && director.profile_path
+              return director.department.includes("Directing")
             }))
+
+          console.log(response.data)
         })
     } catch (error) {
       console.log(error)
