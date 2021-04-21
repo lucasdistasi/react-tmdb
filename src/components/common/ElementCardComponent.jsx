@@ -1,22 +1,29 @@
 import {useState} from "react";
 import {Link} from 'react-router-dom'
 import PropTypes from "prop-types"
-import {getPosterPath} from "../../constants/constants";
+import {getPosterPath} from "../../constants/constants"
 
-export const ElementCardComponent = ({movie, elementType}) => {
+export const ElementCardComponent = ({element, elementType}) => {
 
-  const [backgroundImage, setBackgroundImage] = useState(`url(${getPosterPath("w500", movie.poster_path)})`)
+  const noImage = `${process.env.PUBLIC_URL}/no-image-element.jpg`
+  const [backgroundImage, setBackgroundImage] = useState(element.poster_path ?
+    `url(${getPosterPath("w500", element.poster_path)})`:
+    `url(${noImage})`)
 
   const setBlackBackground = () => {
-    setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${getPosterPath("w500", movie.poster_path)})`)
+    element.poster_path ?
+      setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${getPosterPath("w500", element.poster_path)})`) :
+      setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${noImage})`)
   }
 
   const setMovieBackground = () => {
-    setBackgroundImage(`url(${getPosterPath("w500", movie.poster_path)})`)
+    element.poster_path ?
+      setBackgroundImage(`url(${getPosterPath("w500", element.poster_path)})`) :
+      setBackgroundImage(`url(${noImage})`)
   }
 
   return (
-    <Link to={`/${elementType}/${movie.id}`}
+    <Link to={`/${elementType}/${element.id}`}
           className="mx-10 my-8 rounded shadow-md card-movie rounded-3xl poster-hover-transition flex justify-center items-end animate__animated animate__fadeIn"
           style={{
             backgroundImage: backgroundImage
@@ -27,6 +34,6 @@ export const ElementCardComponent = ({movie, elementType}) => {
 }
 
 ElementCardComponent.prototype = {
-  movies: PropTypes.object,
+  element: PropTypes.object,
   elementType: PropTypes.string
 }

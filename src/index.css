@@ -18,6 +18,14 @@
   background-color: #004052;
 }
 
+.tmdb-blue-alt {
+  background-color: #17718e;
+}
+
+.hover_tmdb-blue-alt:hover {
+  background-color: #1b84a5;
+}
+
 .tmdb-light-green-border {
   border-color: #94dcd2;
 }

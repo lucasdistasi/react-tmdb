@@ -35,7 +35,6 @@ export const NavbarComponent = () => {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-
                 {
                   itIsCurrentPath("/home") || itIsCurrentPath("/index") ?
                     <Link to="/home" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
@@ -46,7 +45,6 @@ export const NavbarComponent = () => {
                       Home
                     </Link>
                 }
-
                 {
                   itIsCurrentPath("/shows") ?
                     <Link to="/shows" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
@@ -57,13 +55,21 @@ export const NavbarComponent = () => {
                       Shows
                     </Link>
                 }
-
+                {
+                  itIsCurrentPath("/search") ?
+                    <Link to="/search" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                      Search
+                    </Link>
+                    :
+                    <Link to="/search" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                      Search
+                    </Link>
+                }
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div className={navbarStatus} id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1 flex flex-col justify-center text-center">
           {
@@ -86,10 +92,18 @@ export const NavbarComponent = () => {
                 Shows
               </Link>
           }
+          {
+            itIsCurrentPath("/search") ?
+              <Link to="/search" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                Search
+              </Link>
+              :
+              <Link to="/search" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Search
+              </Link>
+          }
         </div>
       </div>
-
     </nav>
   )
-
 }

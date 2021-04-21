@@ -5,7 +5,7 @@ export const POPULAR_MOVIES = `https://api.themoviedb.org/3/movie/popular?api_ke
 export const POPULAR_SHOWS = ` https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 
 export const getPosterPath = (size, imgUri) => {
-  return `https://image.tmdb.org/t/p/${size}/${imgUri}`
+  return `https://image.tmdb.org/t/p/${size}${imgUri}`
 }
 
 export const getMovieCredits = (movieId) => {
@@ -34,4 +34,12 @@ export const getShowByPage = (currentPage) => {
 
 export const getSimilarMovies = (movieId) => {
   return `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+}
+
+export const search = (isAdultSearch = false, chosenCriteria = "movie", name) => {
+  return `https://api.themoviedb.org/3/search/${chosenCriteria}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1&include_adult=${isAdultSearch}&query=${name}`
+}
+
+export const searchByPage = (isAdultSearch = false, chosenCriteria = "movie", name, currentPage) => {
+  return `https://api.themoviedb.org/3/search/${chosenCriteria}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${currentPage + 1}&include_adult=${isAdultSearch}&query=${name}`
 }
