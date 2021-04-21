@@ -16,10 +16,12 @@ export const SearchFormComponent = () => {
 
   /*
       TODO
-       - Add link to each element.
+       - Add link to each element. (fixed)
        - Add load more button for actors.
        - Test if NoResultsComponent it's being displayed properly.
        - Test the search functionality.
+       - If there are no genres, do not display the title (http://localhost:3000/movies/350632)
+       - Add a custom poster image if no image is displayed (http://localhost:3000/movies/350632)
    */
 
   const [didSearch, setDidSearch] = useState(false)
@@ -127,7 +129,7 @@ export const SearchFormComponent = () => {
             currentPage={data.currentPage}
             totalPages={data.totalPages}
             title={"Search results"}
-            elementType={""}/>
+            elementType={searchCriteria === "tv" ? "shows" : "movies"}/>
       }
     </div>
   )
