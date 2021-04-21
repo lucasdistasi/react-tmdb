@@ -16,9 +16,7 @@ export const SearchFormComponent = () => {
   /*
       TODO
        - Add load more button for actors.
-       - Test if NoResultsComponent it's being displayed properly. (it's being displayed the second time when we find results)
        - Test the search functionality.
-       - If there are no genres, do not display the title (http://localhost:3000/movies/350632) (done for movies)
    */
 
   // We need to save in the state if the user has made at least 1 search
@@ -105,13 +103,10 @@ export const SearchFormComponent = () => {
         _error.hasError && <ErrorComponent/>
       }
       {
-        didSearch && searchResults && searchResults.length <= 0 && console.log(searchResults)
+        data && data.elements && data.elements.forEach(elements => elements.forEach(element => searchResults.push(element)))
       }
       {
         didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent />
-      }
-      {
-        data && data.elements && data.elements.forEach(elements => elements.forEach(element => searchResults.push(element)))
       }
       {
         didSearch && searchResults && searchResults.length > 0 &&

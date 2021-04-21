@@ -71,7 +71,9 @@ export const ShowInfoComponent = () => {
 
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
-              <GenreComponent genres={genres}/>
+              {
+                genres.length > 0 && <GenreComponent genres={genres}/>
+              }
               <ProductionCompaniesComponent productionCompanies={production_companies}/>
               <StatusComponent status={status}/>
               <HomePageComponent homepage={homepage} title={name}/>
