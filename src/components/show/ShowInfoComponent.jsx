@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useShowInfoFetch} from "../../hooks/show/useShowInfoFetch";
-import {getPosterPath} from "../../constants/constants";
+import {getPosterPath, NO_POSTER} from "../../constants/constants";
 import {ErrorComponent} from "../page/ErrorComponent";
 import {SpinnerComponent} from "../page/SpinnerComponent";
 import {TaglineComponent} from "../common/TaglineComponent";
@@ -33,7 +33,9 @@ export const ShowInfoComponent = () => {
         <div
           className="animate__animated animate__fadeIn animate__delay-1s parallax mid-parallax flex flex-col items-center justify-center"
           style={{
-            backgroundImage: `url(${getPosterPath("original", backdrop_path)})`
+            backgroundImage: `url(${backdrop_path ?
+              getPosterPath("original", backdrop_path) :
+              NO_POSTER})`
           }}/>
 
         <div className="container mx-auto bg-gray-50">

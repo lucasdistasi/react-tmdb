@@ -4,6 +4,8 @@ export const POPULAR_MOVIES = `https://api.themoviedb.org/3/movie/popular?api_ke
 
 export const POPULAR_SHOWS = ` https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 
+export const NO_POSTER = `${process.env.PUBLIC_URL}/no-poster-light.jpg`
+
 export const getPosterPath = (size, imgUri) => {
   return `https://image.tmdb.org/t/p/${size}${imgUri}`
 }

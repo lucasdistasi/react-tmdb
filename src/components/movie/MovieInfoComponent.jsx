@@ -17,6 +17,7 @@ import {ProductionCompaniesComponent} from "../common/ProductionCompaniesCompone
 import {StatusComponent} from "../common/StatusComponent";
 import {HomePageComponent} from "../common/HomePageComponent";
 import {TaglineComponent} from "../common/TaglineComponent";
+import {NO_POSTER} from "../../constants/constants";
 
 export const MovieInfoComponent = () => {
 
@@ -57,7 +58,9 @@ export const MovieInfoComponent = () => {
         <div
           className="animate__animated animate__fadeIn animate__delay-1s parallax mid-parallax flex flex-col items-center justify-center"
           style={{
-            backgroundImage: `url(${getPosterPath("original", backdrop_path)})`
+            backgroundImage: `url(${backdrop_path ? 
+              getPosterPath("original", backdrop_path) :
+              NO_POSTER})`
           }}/>
         <div className="container mx-auto bg-gray-50">
           <div className="py-12">
@@ -92,7 +95,9 @@ export const MovieInfoComponent = () => {
 
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
-              <GenreComponent genres={genres}/>
+              {
+                genres.length > 0 && <GenreComponent genres={genres}/>
+              }
               <ProductionCompaniesComponent productionCompanies={production_companies}/>
               <StatusComponent status={status}/>
               <HomePageComponent homepage={homepage} title={title}/>

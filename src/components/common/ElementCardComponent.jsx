@@ -5,21 +5,27 @@ import {getPosterPath} from "../../constants/constants"
 
 export const ElementCardComponent = ({element, elementType}) => {
 
-  const noImage = `${process.env.PUBLIC_URL}/no-image-element.jpg`
-  const [backgroundImage, setBackgroundImage] = useState(element.poster_path ?
-    `url(${getPosterPath("w500", element.poster_path)})`:
-    `url(${noImage})`)
+  const backDropPath = `url(${getPosterPath("w500", element.backdrop_path)})`
+  const posterPath = `url(${getPosterPath("w500", element.poster_path)})`
+  const noImagePath = `url(${process.env.PUBLIC_URL}/no-image-element.jpg)`
+
+  const [backgroundImage, setBackgroundImage] = useState(
+    element.poster_path ?
+      posterPath :
+      element.backdrop_path ?
+        backDropPath :
+        noImagePath)
 
   const setBlackBackground = () => {
-    element.poster_path ?
-      setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${getPosterPath("w500", element.poster_path)})`) :
-      setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(${noImage})`)
+    setBackgroundImage(`linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), ${backgroundImage}`)
   }
 
   const setMovieBackground = () => {
     element.poster_path ?
-      setBackgroundImage(`url(${getPosterPath("w500", element.poster_path)})`) :
-      setBackgroundImage(`url(${noImage})`)
+      setBackgroundImage(`${posterPath}`) :
+      element.backdrop_path ?
+        setBackgroundImage(`${backDropPath}`) :
+        setBackgroundImage(`${noImagePath}`)
   }
 
   return (

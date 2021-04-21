@@ -9,21 +9,21 @@ import {ErrorComponent} from "../page/ErrorComponent";
 import {NoResultsComponent} from "./NoResultsComponent";
 import {CatalogueGrid} from "../common/CatalogueGrid";
 import {search, searchByPage} from "../../constants/constants";
-import {DirectorComponent} from "../common/DirectorComponent";
 import {DirectorsGridComponent} from "../common/DirectorsGridComponent";
 
 export const SearchFormComponent = () => {
 
   /*
       TODO
-       - Add link to each element. (fixed)
        - Add load more button for actors.
-       - Test if NoResultsComponent it's being displayed properly.
+       - Test if NoResultsComponent it's being displayed properly. (it's being displayed the second time when we find results)
        - Test the search functionality.
-       - If there are no genres, do not display the title (http://localhost:3000/movies/350632)
-       - Add a custom poster image if no image is displayed (http://localhost:3000/movies/350632)
+       - If there are no genres, do not display the title (http://localhost:3000/movies/350632) (done for movies)
    */
 
+  // We need to save in the state if the user has made at least 1 search
+  // in order to display the NoResultsComponent.
+  // Without this, the component will be displayed when the page renders
   const [didSearch, setDidSearch] = useState(false)
   const [searchCriteria, setSearchCriteria] = useState()
   const [{data, _error, loading}, fetchData] = useSearchFetch()
@@ -36,7 +36,6 @@ export const SearchFormComponent = () => {
     let isAdultSearch = document.getElementById("adult-only").checked || false
 
     if (isNameValid(name) && isChosenCriteriaValid(chosenCriteria) && !isSearchLoadMore) {
-      //console.log("fetching data...")
       setDidSearch(true)
       const URI = search(isAdultSearch, chosenCriteria, name)
       fetchData(URI, isSearchLoadMore)
@@ -44,10 +43,6 @@ export const SearchFormComponent = () => {
     }
 
     if (isSearchLoadMore) {
-      //console.log("fetching more pages...")
-      //console.log("name >>> " + name)
-      //console.log("chosenCriteria >>> " + chosenCriteria)
-      //console.log("isAdultSearch >>> " + isAdultSearch)
       const URI = searchByPage(isAdultSearch, chosenCriteria, name, data.currentPage)
       fetchData(URI, isSearchLoadMore)
     }
@@ -110,13 +105,13 @@ export const SearchFormComponent = () => {
         _error.hasError && <ErrorComponent/>
       }
       {
-        didSearch && data && data.elements && data.elements.length <= 0 && <NoResultsComponent />
+        didSearch && searchResults && searchResults.length <= 0 && console.log(searchResults)
+      }
+      {
+        didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent />
       }
       {
         data && data.elements && data.elements.forEach(elements => elements.forEach(element => searchResults.push(element)))
-      }
-      {
-        searchCriteria && console.log(searchCriteria)
       }
       {
         didSearch && searchResults && searchResults.length > 0 &&

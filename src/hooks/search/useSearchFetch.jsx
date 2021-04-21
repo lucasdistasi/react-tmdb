@@ -18,7 +18,6 @@ export const useSearchFetch = () => {
       }
       axios.get(uri)
         .then(response => {
-          console.log(response)
           setData(prev => ({
             ...prev,
               elements: [...prev.elements, response.data.results],
