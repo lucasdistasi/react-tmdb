@@ -12,6 +12,22 @@ export const getPosterPath = (size, imgUri) => {
   return `https://image.tmdb.org/t/p/${size}${imgUri}`
 }
 
+export const getProfilePictureUrl = (profilePicture) => {
+  if (!profilePicture) {
+    return PERSON_WITHOUT_IMAGE
+  } else if (profilePicture.includes("gravatar")) {
+    if (profilePicture.charAt(0) === "/") {
+      profilePicture = profilePicture.slice(1)
+
+      return profilePicture
+    }
+
+    return profilePicture
+  } else {
+    return `https://image.tmdb.org/t/p/w45${profilePicture}`
+  }
+}
+
 export const getMovieCredits = (movieId) => {
   return `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
 }
@@ -53,4 +69,8 @@ export const searchByPage = (isAdultSearch = false, chosenCriteria = "movie", na
 export const filterDuplicatedElements = (elements) => {
   let allElements = elements.map(element => element.id)
   return elements.filter(({id}, index) => !allElements.includes(id, index + 1))
+}
+
+export const getReviews = (elementId, elementType) => {
+  return `https://api.themoviedb.org/3/${elementType}/${elementId}/reviews?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 }

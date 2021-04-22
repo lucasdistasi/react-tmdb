@@ -131,7 +131,7 @@ body {
 
 /* :checked - resize to full height */
 .tab input:checked ~ .tab-content {
-  max-height: 1000vh;
+  max-height: 1400vh;
 }
 
 /* Label formatting when open */

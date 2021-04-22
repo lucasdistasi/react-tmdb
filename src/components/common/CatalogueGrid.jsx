@@ -8,7 +8,7 @@ export const CatalogueGrid = ({elements, loadMoreFunction, isLoading, currentPag
     <>
       {
         elements.length > 0 &&
-        <h1 className="text-center font-sans text-5xl font-semibold my-8">{title}</h1>
+        <h1 className="text-center font-sans text-4xl my-8">{title}</h1>
       }
       <div className="mx-auto flex justify-center flex-wrap pb-12 animate__animated animate__fadeIn">
         {

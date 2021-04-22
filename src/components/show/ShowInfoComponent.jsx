@@ -13,15 +13,24 @@ import {HomePageComponent} from "../common/HomePageComponent";
 import {NetworkGridComponent} from "./NetworkGridComponent";
 import {SeasonAccordionComponent} from "./SeasonAccordionComponent";
 import {PeopleGridComponent} from "../common/PeopleGridComponent";
+import {ReviewsGridComponent} from "../common/ReviewsGridComponent";
+import {useFetchReviews} from "../../hooks/common/useFetchReviews";
 
 export const ShowInfoComponent = () => {
+
+  /*
+        TODO
+         - Add trailer video => https://developers.themoviedb.org/3/tv/get-tv-videos
+         - Add similar shows => https://developers.themoviedb.org/3/tv/get-similar-tv-shows
+         - Maybe add some reviews => https://developers.themoviedb.org/3/movies/get-movie-reviews
+   */
 
   const {showId} = useParams();
   const [{
     name, tagline, overview, backdrop_path, genres, production_companies, status, homepage, vote_average,
     first_air_date, last_air_date, number_of_episodes, number_of_seasons, created_by, networks, seasons
-  }
-    , loading, _error] = useShowInfoFetch({showId})
+  }, loading, _error] = useShowInfoFetch({showId})
+  const [{reviews, loadingReviews, _errorReviews}] = useFetchReviews(showId, "tv")
 
   /*
       https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details
@@ -97,6 +106,12 @@ export const ShowInfoComponent = () => {
           {
             seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} originalPoster={backdrop_path}/>
           }
+
+          {
+            reviews && reviews.length > 0 && console.log(reviews)
+          }
+
+          <ReviewsGridComponent reviews={reviews}/>
 
         </div>
       </div>
