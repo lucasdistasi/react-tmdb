@@ -74,3 +74,7 @@ export const filterDuplicatedElements = (elements) => {
 export const getReviews = (elementId, elementType) => {
   return `https://api.themoviedb.org/3/${elementType}/${elementId}/reviews?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 }
+
+export const getYoutubeVideos = (elementId, elementType) => {
+  return  `https://api.themoviedb.org/3/${elementType}/${elementId}/videos?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+}

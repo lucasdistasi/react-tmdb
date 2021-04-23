@@ -18,7 +18,9 @@ import {TaglineComponent} from "../common/TaglineComponent";
 import {NO_POSTER} from "../../constants/constants";
 import {PeopleGridComponent} from "../common/PeopleGridComponent";
 import {ReviewsGridComponent} from "../common/ReviewsGridComponent";
-import {useFetchReviews} from "../../hooks/common/useFetchReviews";
+import {useReviewsFetch} from "../../hooks/common/useReviewsFetch";
+import {TrailerComponent} from "../common/TrailerComponent";
+import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
 
 export const MovieInfoComponent = () => {
 
@@ -30,7 +32,8 @@ export const MovieInfoComponent = () => {
   const {directors} = useMovieDirectorsFetch(movieId)
   const {actors} = useMovieActorsFetch(movieId)
   const [{state, similarMoviesLoading}] = useSimilarMoviesFetch(movieId)
-  const [{reviews, loadingReviews, _errorReviews}] = useFetchReviews(movieId, "movie")
+  const [{reviews, loadingReviews, _errorReviews}] = useReviewsFetch(movieId, "movie")
+  const [trailers] = useTrailerFetch(movieId, "movie")
 
   const hours = Math.floor(runtime / 60)
   const minutes = runtime % 60
@@ -69,6 +72,9 @@ export const MovieInfoComponent = () => {
             <div className="text-center">
               <h1 className="text-7xl py-6">{title}</h1>
               <TaglineComponent tagline={tagline}/>
+
+              <TrailerComponent trailers={trailers} />
+
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">

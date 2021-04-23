@@ -14,7 +14,9 @@ import {NetworkGridComponent} from "./NetworkGridComponent";
 import {SeasonAccordionComponent} from "./SeasonAccordionComponent";
 import {PeopleGridComponent} from "../common/PeopleGridComponent";
 import {ReviewsGridComponent} from "../common/ReviewsGridComponent";
-import {useFetchReviews} from "../../hooks/common/useFetchReviews";
+import {useReviewsFetch} from "../../hooks/common/useReviewsFetch";
+import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
+import {TrailerComponent} from "../common/TrailerComponent";
 
 export const ShowInfoComponent = () => {
 
@@ -22,7 +24,6 @@ export const ShowInfoComponent = () => {
         TODO
          - Add trailer video => https://developers.themoviedb.org/3/tv/get-tv-videos
          - Add similar shows => https://developers.themoviedb.org/3/tv/get-similar-tv-shows
-         - Maybe add some reviews => https://developers.themoviedb.org/3/movies/get-movie-reviews
    */
 
   const {showId} = useParams();
@@ -30,7 +31,8 @@ export const ShowInfoComponent = () => {
     name, tagline, overview, backdrop_path, genres, production_companies, status, homepage, vote_average,
     first_air_date, last_air_date, number_of_episodes, number_of_seasons, created_by, networks, seasons
   }, loading, _error] = useShowInfoFetch({showId})
-  const [{reviews, loadingReviews, _errorReviews}] = useFetchReviews(showId, "tv")
+  const [{reviews, loadingReviews, _errorReviews}] = useReviewsFetch(showId, "tv")
+  const [trailers] = useTrailerFetch(showId, "tv")
 
   /*
       https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details
@@ -52,6 +54,9 @@ export const ShowInfoComponent = () => {
             <div className="text-center">
               <h1 className="text-7xl py-6">{name}</h1>
               <TaglineComponent tagline={tagline}/>
+
+              <TrailerComponent trailers={trailers}/>
+
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">
@@ -105,10 +110,6 @@ export const ShowInfoComponent = () => {
 
           {
             seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} originalPoster={backdrop_path}/>
-          }
-
-          {
-            reviews && reviews.length > 0 && console.log(reviews)
           }
 
           <ReviewsGridComponent reviews={reviews}/>

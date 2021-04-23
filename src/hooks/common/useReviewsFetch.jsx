@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {getReviews} from "../../constants/constants";
 
-export const useFetchReviews = (elementId, elementType) => {
+export const useReviewsFetch = (elementId, elementType) => {
 
   const [reviews, setReview] = useState([])
   const [loadingReviews, setLoadingReviews] = useState(false)

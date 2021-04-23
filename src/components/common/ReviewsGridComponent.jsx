@@ -13,7 +13,7 @@ export const ReviewsGridComponent = ({reviews}) => {
 
       {
         reviews.map(review => {
-          return <ReviewComponent review={review} />
+          return <ReviewComponent review={review} key={review.id} />
         })
       }
     </div> : null
