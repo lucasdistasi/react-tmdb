@@ -4,6 +4,7 @@ import {LoadMoreButtonComponent} from "../page/LoadMoreButtonComponent";
 
 export const CatalogueGrid = ({elements, loadMoreFunction, isLoading, currentPage, totalPages, title, elementType}) => {
 
+
   return (
     <>
       {

@@ -52,8 +52,8 @@ export const getShowByPage = (currentPage) => {
   return `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=${currentPage + 1}`
 }
 
-export const getSimilarMovies = (movieId) => {
-  return `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+export const getSimilar = (elementType, elementId) => {
+  return `https://api.themoviedb.org/3/${elementType}/${elementId}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 }
 
 export const search = (isAdultSearch = false, chosenCriteria = "movie", name) => {

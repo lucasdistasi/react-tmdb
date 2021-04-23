@@ -8,7 +8,7 @@ import {useMovieDirectorsFetch} from "../../hooks/movie/useMovieDirectorsFetch";
 import {useMovieActorsFetch} from "../../hooks/movie/useMovieActorsFetch";
 import {getPosterPath} from "../../constants/constants";
 import {CatalogueGrid} from "../common/CatalogueGrid";
-import {useSimilarMoviesFetch} from "../../hooks/movie/useSimilarMoviesFetch";
+import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
 import {useEffect} from "react";
 import {GenreComponent} from "../common/GenreComponent";
 import {ProductionCompaniesComponent} from "../common/ProductionCompaniesComponent";
@@ -31,7 +31,7 @@ export const MovieInfoComponent = () => {
   }, loading, _error] = useMovieInfoFetch(movieId)
   const {directors} = useMovieDirectorsFetch(movieId)
   const {actors} = useMovieActorsFetch(movieId)
-  const [{state, similarMoviesLoading}] = useSimilarMoviesFetch(movieId)
+  const [{state, similarMoviesLoading}] = useSimilarFetch("movie", movieId)
   const [{reviews, loadingReviews, _errorReviews}] = useReviewsFetch(movieId, "movie")
   const [trailers] = useTrailerFetch(movieId, "movie")
 
@@ -128,14 +128,14 @@ export const MovieInfoComponent = () => {
             currentPage={0}
             totalPages={0}/>
 
-          <CatalogueGrid elements={state.movies}
+          <ReviewsGridComponent reviews={reviews}/>
+
+          <CatalogueGrid elements={state.elements}
                          isLoading={similarMoviesLoading}
                          currentPage={state.currentPage}
                          totalPages={state.totalPages}
                          title="Similar Movies"
                          elementType="movies"/>
-
-          <ReviewsGridComponent reviews={reviews}/>
         </div>
       </div>
   )

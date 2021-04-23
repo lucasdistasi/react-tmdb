@@ -27,8 +27,6 @@ export const TrailerComponent = ({trailers}) => {
   const extraLargeDevices = `https://img.youtube.com/vi/${getRandomTrailer() && getRandomTrailer()}/maxresdefault.jpg`
 
 
-  hasTrailers && console.log(trailers)
-
   return (
     hasTrailers && videoKey ?
     <>

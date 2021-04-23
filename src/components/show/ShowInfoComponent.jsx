@@ -17,14 +17,10 @@ import {ReviewsGridComponent} from "../common/ReviewsGridComponent";
 import {useReviewsFetch} from "../../hooks/common/useReviewsFetch";
 import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
 import {TrailerComponent} from "../common/TrailerComponent";
+import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
+import {CatalogueGrid} from "../common/CatalogueGrid";
 
 export const ShowInfoComponent = () => {
-
-  /*
-        TODO
-         - Add trailer video => https://developers.themoviedb.org/3/tv/get-tv-videos
-         - Add similar shows => https://developers.themoviedb.org/3/tv/get-similar-tv-shows
-   */
 
   const {showId} = useParams();
   const [{
@@ -32,6 +28,7 @@ export const ShowInfoComponent = () => {
     first_air_date, last_air_date, number_of_episodes, number_of_seasons, created_by, networks, seasons
   }, loading, _error] = useShowInfoFetch({showId})
   const [{reviews, loadingReviews, _errorReviews}] = useReviewsFetch(showId, "tv")
+  const [{state, similarMoviesLoading}] = useSimilarFetch("tv", showId)
   const [trailers] = useTrailerFetch(showId, "tv")
 
   /*
@@ -114,6 +111,12 @@ export const ShowInfoComponent = () => {
 
           <ReviewsGridComponent reviews={reviews}/>
 
+          <CatalogueGrid elements={state.elements}
+                         isLoading={similarMoviesLoading}
+                         currentPage={state.currentPage}
+                         totalPages={state.totalPages}
+                         title="Similar shows"
+                         elementType="shows"/>
         </div>
       </div>
   )

@@ -10,7 +10,6 @@ export const SeasonAccordionComponent = ({seasons, showId, originalPoster}) => {
   const seasonsWithEpisodes = nonSpecialSeason.filter(season => season.episode_count > 0)
   const incomingSeasons = seasons.filter(season => season.episode_count === 0)
 
-
   return (
     <div className="container">
       <div className="w-full mx-auto p-8">
