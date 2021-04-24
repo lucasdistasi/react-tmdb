@@ -20,12 +20,12 @@ export const useReviewsFetch = (elementId, elementType) => {
           _setErrorReviews(true)
         })
         .finally(() => {
-        setLoadingReviews(true)
+        setLoadingReviews(false)
       })
     } catch (error) {
       _setErrorReviews(true)
     } finally {
-      setLoadingReviews(true)
+      setLoadingReviews(false)
     }
   }, [elementId, elementType])
 

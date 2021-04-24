@@ -18,7 +18,7 @@ import {useReviewsFetch} from "../../hooks/common/useReviewsFetch";
 import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
 import {TrailerComponent} from "../common/TrailerComponent";
 import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
-import {CatalogueGrid} from "../common/CatalogueGrid";
+import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
 
 export const ShowInfoComponent = () => {
 
@@ -51,9 +51,7 @@ export const ShowInfoComponent = () => {
             <div className="text-center">
               <h1 className="text-7xl py-6">{name}</h1>
               <TaglineComponent tagline={tagline}/>
-
               <TrailerComponent trailers={trailers}/>
-
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">
@@ -82,9 +80,7 @@ export const ShowInfoComponent = () => {
 
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
-              {
-                genres && genres.length > 0 && <GenreComponent genres={genres}/>
-              }
+              <GenreComponent genres={genres}/>
               <ProductionCompaniesComponent productionCompanies={production_companies}/>
               <StatusComponent status={status}/>
               <HomePageComponent homepage={homepage} title={name}/>
@@ -109,14 +105,14 @@ export const ShowInfoComponent = () => {
             seasons && <SeasonAccordionComponent seasons={seasons} showId={showId} originalPoster={backdrop_path}/>
           }
 
-          <ReviewsGridComponent reviews={reviews}/>
+          <ReviewsGridComponent reviews={reviews}  isLoading={loadingReviews} hasErrors={_errorReviews}/>
 
-          <CatalogueGrid elements={state.elements}
-                         isLoading={similarMoviesLoading}
-                         currentPage={state.currentPage}
-                         totalPages={state.totalPages}
-                         title="Similar shows"
-                         elementType="shows"/>
+          <CatalogueGridComponent elements={state.elements}
+                                  isLoading={similarMoviesLoading}
+                                  currentPage={state.currentPage}
+                                  totalPages={state.totalPages}
+                                  title="Similar shows"
+                                  elementType="shows"/>
         </div>
       </div>
   )

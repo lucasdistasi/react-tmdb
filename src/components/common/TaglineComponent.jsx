@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const TaglineComponent = ({tagline}) => {
 
   return (
@@ -6,4 +8,8 @@ export const TaglineComponent = ({tagline}) => {
         {tagline}
       </p> : null
   )
+}
+
+TaglineComponent.prototype = {
+  tagline: PropTypes.string
 }

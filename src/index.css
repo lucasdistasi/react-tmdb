@@ -93,7 +93,6 @@ body {
  */
 
 .loader {
-  border-top-color: dodgerblue;
   -webkit-animation: spinner 1.5s linear infinite;
   animation: spinner 1.5s linear infinite;
 }

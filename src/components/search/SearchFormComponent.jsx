@@ -7,7 +7,7 @@ import {useState} from "react";
 import Swal from "sweetalert2";
 import {ErrorComponent} from "../page/ErrorComponent";
 import {NoResultsComponent} from "./NoResultsComponent";
-import {CatalogueGrid} from "../common/CatalogueGrid";
+import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
 import {search, searchByPage} from "../../constants/constants";
 import {PeopleGridComponent} from "../common/PeopleGridComponent";
 import {filterDuplicatedElements} from "../../constants/constants";
@@ -122,7 +122,7 @@ export const SearchFormComponent = () => {
             currentPage={data.currentPage}
             totalPages={data.totalPages}/> :
 
-          <CatalogueGrid
+          <CatalogueGridComponent
             elements={filterDuplicatedElements(searchResults)}
             loadMoreFunction={() => fetchSearchData(true)}
             isLoading={loading}

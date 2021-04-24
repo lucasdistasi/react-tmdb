@@ -1,6 +1,6 @@
 import {NavbarComponent} from "../components/page/NavbarComponent";
 import {FooterComponent} from "../components/page/FooterComponent";
-import {CatalogueGrid} from "../components/common/CatalogueGrid";
+import {CatalogueGridComponent} from "../components/common/CatalogueGridComponent";
 import {useElementGridFetch} from "../hooks/common/useElementGridFetch";
 import {getShowByPage} from "../constants/constants";
 import {POPULAR_SHOWS} from "../constants/constants";
@@ -24,13 +24,13 @@ export const ShowsPage = () => {
       <NavbarComponent/>
       {
         _error ? <ErrorComponent/> :
-          <CatalogueGrid elements={shows}
-                         loadMoreFunction={loadMoreFunction}
-                         isLoading={loading}
-                         currentPage={state.currentPage}
-                         totalPages={state.totalPages}
-                         title="Popular Shows"
-                         elementType="shows"/>
+          <CatalogueGridComponent elements={shows}
+                                  loadMoreFunction={loadMoreFunction}
+                                  isLoading={loading}
+                                  currentPage={state.currentPage}
+                                  totalPages={state.totalPages}
+                                  title="Popular Shows"
+                                  elementType="shows"/>
       }
       <FooterComponent/>
     </>

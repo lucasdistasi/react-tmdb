@@ -1,6 +1,7 @@
 import React from 'react';
 import MediaQuery from "react-responsive/src";
 import {TrailerVideoComponent} from "./TrailerVideoComponent";
+import PropTypes from "prop-types";
 
 export const TrailerComponent = ({trailers}) => {
 
@@ -66,4 +67,8 @@ export const TrailerComponent = ({trailers}) => {
       </MediaQuery>
     </> : null
   )
+}
+
+TrailerComponent.propType = {
+  trailers: PropTypes.array
 }

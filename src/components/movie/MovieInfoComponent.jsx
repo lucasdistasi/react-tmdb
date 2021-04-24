@@ -7,7 +7,7 @@ import {ErrorComponent} from "../page/ErrorComponent";
 import {useMovieDirectorsFetch} from "../../hooks/movie/useMovieDirectorsFetch";
 import {useMovieActorsFetch} from "../../hooks/movie/useMovieActorsFetch";
 import {getPosterPath} from "../../constants/constants";
-import {CatalogueGrid} from "../common/CatalogueGrid";
+import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
 import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
 import {useEffect} from "react";
 import {GenreComponent} from "../common/GenreComponent";
@@ -58,7 +58,7 @@ export const MovieInfoComponent = () => {
   })
 
   return (
-    _error ? <ErrorComponent/> : loading ? <SpinnerComponent/> :
+    _error ? <ErrorComponent/> : loading ? <SpinnerComponent color={"#7FEF08FF"}/> :
       <div>
         <div
           className="animate__animated animate__fadeIn animate__delay-1s parallax mid-parallax flex flex-col items-center justify-center"
@@ -103,9 +103,7 @@ export const MovieInfoComponent = () => {
 
           <div className="py-14">
             <div className="flex flex-col lg:flex-row items-center lg:justify-around mx-16 mt-5">
-              {
-                genres && genres.length > 0 && <GenreComponent genres={genres}/>
-              }
+              <GenreComponent genres={genres}/>
               <ProductionCompaniesComponent productionCompanies={production_companies}/>
               <StatusComponent status={status}/>
               <HomePageComponent homepage={homepage} title={title}/>
@@ -128,14 +126,14 @@ export const MovieInfoComponent = () => {
             currentPage={0}
             totalPages={0}/>
 
-          <ReviewsGridComponent reviews={reviews}/>
+          <ReviewsGridComponent reviews={reviews} isLoading={loadingReviews} hasErrors={_errorReviews}/>
 
-          <CatalogueGrid elements={state.elements}
-                         isLoading={similarMoviesLoading}
-                         currentPage={state.currentPage}
-                         totalPages={state.totalPages}
-                         title="Similar Movies"
-                         elementType="movies"/>
+          <CatalogueGridComponent elements={state.elements}
+                                  isLoading={similarMoviesLoading}
+                                  currentPage={state.currentPage}
+                                  totalPages={state.totalPages}
+                                  title="Similar Movies"
+                                  elementType="movies"/>
         </div>
       </div>
   )

@@ -1,6 +1,7 @@
 import {getProfilePictureUrl} from "../../constants/constants";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 export const ReviewComponent = ({review}) => {
 
@@ -38,4 +39,8 @@ export const ReviewComponent = ({review}) => {
       </div>
     </div>
   )
+}
+
+ReviewComponent.prototype = {
+  review: PropTypes.object
 }

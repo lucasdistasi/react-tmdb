@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const ProductionCompaniesComponent = ({productionCompanies}) => {
 
   return (
@@ -10,4 +12,8 @@ export const ProductionCompaniesComponent = ({productionCompanies}) => {
         }
       </div> : null
   )
+}
+
+ProductionCompaniesComponent.prototype = {
+  productionCompanies: PropTypes.array
 }

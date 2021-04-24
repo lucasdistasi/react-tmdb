@@ -1,11 +1,12 @@
 import {ElementCardComponent} from "./ElementCardComponent";
 import {SpinnerComponent} from "../page/SpinnerComponent";
 import {LoadMoreButtonComponent} from "../page/LoadMoreButtonComponent";
+import PropTypes from "prop-types";
 
-export const CatalogueGrid = ({elements, loadMoreFunction, isLoading, currentPage, totalPages, title, elementType}) => {
-
+export const CatalogueGridComponent = ({elements, loadMoreFunction, isLoading, currentPage, totalPages, title, elementType}) => {
 
   return (
+    isLoading ? <SpinnerComponent color={"#1F9005FF"}/> :
     <>
       {
         elements.length > 0 &&
@@ -19,12 +20,19 @@ export const CatalogueGrid = ({elements, loadMoreFunction, isLoading, currentPag
         }
       </div>
       {
-        isLoading && <SpinnerComponent/>
-      }
-      {
         currentPage < totalPages && !isLoading && loadMoreFunction &&
         <LoadMoreButtonComponent callback={loadMoreFunction}/>
       }
     </>
   )
+}
+
+CatalogueGridComponent.prototype = {
+  elements: PropTypes.array,
+  loadMoreFunction: PropTypes.func,
+  isLoading: PropTypes.bool,
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number,
+  title: PropTypes.string,
+  elementType: PropTypes.string
 }

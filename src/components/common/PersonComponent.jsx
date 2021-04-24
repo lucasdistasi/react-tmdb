@@ -1,4 +1,5 @@
 import {getPosterPath, PERSON_WITHOUT_IMAGE} from "../../constants/constants";
+import PropTypes from "prop-types";
 
 export const PersonComponent = ({person}) => {
 
@@ -16,4 +17,8 @@ export const PersonComponent = ({person}) => {
       </div>
     </div>
   )
+}
+
+PersonComponent.prototype = {
+  person: PropTypes.object
 }

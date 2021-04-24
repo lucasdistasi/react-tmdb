@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const HomePageComponent = ({homepage, title}) => {
 
   return (
@@ -8,4 +10,9 @@ export const HomePageComponent = ({homepage, title}) => {
            rel="noreferrer">{title}</a>
       </div> : null
   )
+}
+
+HomePageComponent.prototype = {
+  homepage: PropTypes.string,
+  title: PropTypes.string
 }

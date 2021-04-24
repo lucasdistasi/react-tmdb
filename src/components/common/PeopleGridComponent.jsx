@@ -1,6 +1,7 @@
 import {SpinnerComponent} from "../page/SpinnerComponent";
 import {LoadMoreButtonComponent} from "../page/LoadMoreButtonComponent";
 import {PersonComponent} from "./PersonComponent";
+import PropTypes from "prop-types";
 
 export const PeopleGridComponent = ({people, title, loadMoreFunction, isLoading, currentPage, totalPages}) => {
 
@@ -28,4 +29,13 @@ export const PeopleGridComponent = ({people, title, loadMoreFunction, isLoading,
       }
     </> : null
   )
+}
+
+PeopleGridComponent.prototype = {
+  people: PropTypes.array,
+  title: PropTypes.string,
+  loadMoreFunction: PropTypes.func,
+  isLoading: PropTypes.bool,
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number
 }

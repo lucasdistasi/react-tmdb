@@ -1,5 +1,6 @@
 import FsLightbox from "fslightbox-react";
 import {useState} from "react";
+import PropTypes from "prop-types";
 
 export const TrailerVideoComponent = ({backgroundImage, width, height, videoKey}) => {
 
@@ -31,4 +32,11 @@ export const TrailerVideoComponent = ({backgroundImage, width, height, videoKey}
       </div>
     </div>
   )
+}
+
+TrailerVideoComponent.propType = {
+  backgroundImage: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  videoKey: PropTypes.string
 }

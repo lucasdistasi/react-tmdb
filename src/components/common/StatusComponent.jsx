@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const StatusComponent = ({status}) => {
 
   return (
@@ -9,4 +11,8 @@ export const StatusComponent = ({status}) => {
         }
       </div> : null
   )
+}
+
+StatusComponent.prototype = {
+  status: PropTypes.string
 }

@@ -1,6 +1,6 @@
 import {NavbarComponent} from "../components/page/NavbarComponent";
 import {HeroComponent} from "../components/page/HeroComponent";
-import {CatalogueGrid} from "../components/common/CatalogueGrid";
+import {CatalogueGridComponent} from "../components/common/CatalogueGridComponent";
 import {FooterComponent} from "../components/page/FooterComponent";
 import {ErrorComponent} from "../components/page/ErrorComponent";
 import {useElementGridFetch} from "../hooks/common/useElementGridFetch"
@@ -23,13 +23,13 @@ export const HomePage = () => {
         _error ? <ErrorComponent/> :
           <>
             <HeroComponent/>
-            <CatalogueGrid elements={filterDuplicatedElements(state.elements)}
-                           loadMoreFunction={loadMoreMovies}
-                           isLoading={loading}
-                           currentPage={state.currentPage}
-                           totalPages={state.totalPages}
-                           title="Popular Movies"
-                           elementType="movies"/>
+            <CatalogueGridComponent elements={filterDuplicatedElements(state.elements)}
+                                    loadMoreFunction={loadMoreMovies}
+                                    isLoading={loading}
+                                    currentPage={state.currentPage}
+                                    totalPages={state.totalPages}
+                                    title="Popular Movies"
+                                    elementType="movies"/>
           </>
       }
       <FooterComponent/>
