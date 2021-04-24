@@ -5,6 +5,7 @@ import {useElementGridFetch} from "../hooks/common/useElementGridFetch";
 import {getShowByPage} from "../constants/constants";
 import {POPULAR_SHOWS} from "../constants/constants";
 import {ErrorComponent} from "../components/page/ErrorComponent";
+import {BackToTopComponent} from "../components/common/BackToTopComponent";
 
 export const ShowsPage = () => {
 
@@ -32,6 +33,7 @@ export const ShowsPage = () => {
                                   title="Popular Shows"
                                   elementType="shows"/>
       }
+      <BackToTopComponent/>
       <FooterComponent/>
     </>
   )

@@ -21,6 +21,7 @@ import {ReviewsGridComponent} from "../common/ReviewsGridComponent";
 import {useReviewsFetch} from "../../hooks/common/useReviewsFetch";
 import {TrailerComponent} from "../common/TrailerComponent";
 import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
+import {scrollToTop} from "../../constants/constants";
 
 export const MovieInfoComponent = () => {
 
@@ -45,14 +46,6 @@ export const MovieInfoComponent = () => {
     minimumFractionDigits: 0
   })
 
-  const scrollToTop = () => {
-    const position = document.documentElement.scrollTop || document.body.scrollTop;
-    if (position > 0) {
-      window.requestAnimationFrame(scrollToTop);
-      window.scrollTo(0, position - position / 80);
-    }
-  }
-
   useEffect(() => {
     scrollToTop()
   })
@@ -72,9 +65,7 @@ export const MovieInfoComponent = () => {
             <div className="text-center">
               <h1 className="text-7xl py-6">{title}</h1>
               <TaglineComponent tagline={tagline}/>
-
-              <TrailerComponent trailers={trailers} />
-
+              <TrailerComponent trailers={trailers} elementId={movieId} elementType={"movie"} />
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">
@@ -109,7 +100,6 @@ export const MovieInfoComponent = () => {
               <HomePageComponent homepage={homepage} title={title}/>
             </div>
           </div>
-
           <PeopleGridComponent
             people={directors}
             title={"Directors"}
@@ -117,7 +107,6 @@ export const MovieInfoComponent = () => {
             isLoading={loading}
             currentPage={0}
             totalPages={0}/>
-
           <PeopleGridComponent
             people={actors}
             title={"Popular Actors / Actresses"}
@@ -125,9 +114,7 @@ export const MovieInfoComponent = () => {
             isLoading={loading}
             currentPage={0}
             totalPages={0}/>
-
           <ReviewsGridComponent reviews={reviews} isLoading={loadingReviews} hasErrors={_errorReviews}/>
-
           <CatalogueGridComponent elements={state.elements}
                                   isLoading={similarMoviesLoading}
                                   currentPage={state.currentPage}

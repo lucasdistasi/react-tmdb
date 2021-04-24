@@ -16,9 +16,8 @@ export const SearchFormComponent = () => {
 
   /*
       TODO
-       - Test the search functionality.
-       - Maybe add an Actors / Director page to display information about the person and his/her best movies.
-        - https://developers.themoviedb.org/3/people/get-person-details
+       - Test the search functionality
+       - Search if there is an endpoint to retrieve most popular movies/shows from a person
    */
 
   // We need to save in the state if the user has made at least 1 search

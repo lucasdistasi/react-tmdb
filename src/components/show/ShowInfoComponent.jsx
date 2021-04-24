@@ -19,6 +19,8 @@ import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
 import {TrailerComponent} from "../common/TrailerComponent";
 import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
 import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
+import {scrollToTop} from "../../constants/constants";
+import {useEffect} from "react";
 
 export const ShowInfoComponent = () => {
 
@@ -34,6 +36,10 @@ export const ShowInfoComponent = () => {
   /*
       https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details
    */
+
+  useEffect(() => {
+    scrollToTop()
+  })
 
   return (
     _error ? <ErrorComponent/> : loading ? <SpinnerComponent/> :
@@ -51,7 +57,7 @@ export const ShowInfoComponent = () => {
             <div className="text-center">
               <h1 className="text-7xl py-6">{name}</h1>
               <TaglineComponent tagline={tagline}/>
-              <TrailerComponent trailers={trailers}/>
+              <TrailerComponent trailers={trailers} elementId={showId} elementType="tv"/>
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">

@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 export const CatalogueGridComponent = ({elements, loadMoreFunction, isLoading, currentPage, totalPages, title, elementType}) => {
 
   return (
-    isLoading ? <SpinnerComponent color={"#1F9005FF"}/> :
     <>
       {
         elements.length > 0 &&
@@ -19,6 +18,9 @@ export const CatalogueGridComponent = ({elements, loadMoreFunction, isLoading, c
           })
         }
       </div>
+      {
+        isLoading && <SpinnerComponent color={"#1F9005FF"}/>
+      }
       {
         currentPage < totalPages && !isLoading && loadMoreFunction &&
         <LoadMoreButtonComponent callback={loadMoreFunction}/>

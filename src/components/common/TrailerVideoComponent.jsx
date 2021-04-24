@@ -13,6 +13,7 @@ export const TrailerVideoComponent = ({backgroundImage, width, height, videoKey}
         backgroundImage: `url(${backgroundImage})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundSize: "cover",
         width: width,
         height: height
       }}
@@ -25,10 +26,8 @@ export const TrailerVideoComponent = ({backgroundImage, width, height, videoKey}
         ]}
       />
 
-      <div className="logo">
-        <div className="youtube">
-          <span className="arrow"/>
-        </div>
+      <div className="banner-container bg-black w-full h-16 md:h-20 lg:h-36 opacity-80 flex justify-center items-center">
+        <p className="text-white text-2xl md:text-3xl lg:text-5xl font-bold uppercase opacity-100 trailer-text">Video Trailer</p>
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ import {useElementGridFetch} from "../hooks/common/useElementGridFetch"
 import {getMovieByPage} from "../constants/constants";
 import {POPULAR_MOVIES} from "../constants/constants";
 import {filterDuplicatedElements} from "../constants/constants";
+import {BackToTopComponent} from "../components/common/BackToTopComponent";
 
 export const HomePage = () => {
 
@@ -32,6 +33,7 @@ export const HomePage = () => {
                                     elementType="movies"/>
           </>
       }
+      <BackToTopComponent/>
       <FooterComponent/>
     </>
   )
