@@ -2,6 +2,7 @@ import {ShowEpisodeRowComponent} from "./ShowEpisodeRowComponent";
 import {useShowEpisodeFetch} from "../../hooks/show/useShowEpisodeFetch";
 import {ErrorComponent} from "../page/ErrorComponent";
 import {SpinnerComponent} from "../page/SpinnerComponent";
+import PropTypes from "prop-types";
 
 export const SeasonsTableComponent = ({season, showId}) => {
 
@@ -69,4 +70,9 @@ export const SeasonsTableComponent = ({season, showId}) => {
       </div>
     </>
   )
+}
+
+SeasonsTableComponent.propTypes = {
+  season: PropTypes.object,
+  showId: PropTypes.string
 }

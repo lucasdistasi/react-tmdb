@@ -1,4 +1,5 @@
 import {getPosterPath} from "../../constants/constants";
+import PropTypes from "prop-types";
 
 export const NetworkComponent = ({network}) => {
 
@@ -15,4 +16,8 @@ export const NetworkComponent = ({network}) => {
       }
     </div>
   )
+}
+
+NetworkComponent.propType = {
+  network: PropTypes.object
 }

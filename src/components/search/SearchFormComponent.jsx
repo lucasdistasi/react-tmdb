@@ -107,9 +107,6 @@ export const SearchFormComponent = () => {
         data && data.elements && data.elements.forEach(elements => elements.forEach(element => searchResults.push(element)))
       }
       {
-        didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent/>
-      }
-      {
         didSearch && searchResults && searchResults.length > 0 &&
         searchCriteria === "person" ?
 
@@ -129,6 +126,9 @@ export const SearchFormComponent = () => {
             totalPages={data.totalPages}
             title={"Search results"}
             elementType={searchCriteria === "tv" ? "shows" : "movies"}/>
+      }
+      {
+        didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent/>
       }
     </div>
   )

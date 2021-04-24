@@ -1,5 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
+import PropTypes from "prop-types";
 
 export const ShowEpisodeRowComponent = ({episodeNumber, episodeName, airDate, voteAverage}) => {
 
@@ -34,4 +35,11 @@ export const ShowEpisodeRowComponent = ({episodeNumber, episodeName, airDate, vo
       </td>
     </tr>
   )
+}
+
+ShowEpisodeRowComponent.propTypes = {
+  episodeNumber: PropTypes.number,
+  episodeName: PropTypes.string,
+  airDate: PropTypes.string,
+  voteAverage: PropTypes.number
 }

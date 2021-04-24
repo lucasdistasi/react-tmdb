@@ -2,6 +2,7 @@ import {getPosterPath} from "../../constants/constants";
 import {faBirthdayCake, faMapMarker, faCircle, faSkullCrossbones} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {PERSON_WITHOUT_IMAGE_BIG} from "../../constants/constants";
+import PropTypes from "prop-types";
 
 export const PersonDescriptionComponent = ({person}) => {
 
@@ -15,7 +16,7 @@ export const PersonDescriptionComponent = ({person}) => {
             style={{
               width: "421px",
               height: "632px"
-            }}/>
+            }} alt={person.name}/>
 
       <div className="px-5">
         <h1 className="text-3xl text-center font-bold uppercase mb-5 mt-12 lg:mt-0">
@@ -61,4 +62,8 @@ export const PersonDescriptionComponent = ({person}) => {
       </div>
     </div>
   )
+}
+
+PersonDescriptionComponent.prototype = {
+  person: PropTypes.object
 }

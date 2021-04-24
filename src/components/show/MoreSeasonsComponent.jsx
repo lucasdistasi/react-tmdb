@@ -1,4 +1,5 @@
 import {getPosterPath} from "../../constants/constants";
+import PropTypes from "prop-types";
 
 export const MoreSeasonsComponent = ({incomingSeasons, originalPoster}) => {
 
@@ -42,4 +43,9 @@ export const MoreSeasonsComponent = ({incomingSeasons, originalPoster}) => {
       </div>
     </section>
   )
+}
+
+MoreSeasonsComponent.prototype = {
+  incomingSeasons: PropTypes.array,
+  originalPoster: PropTypes.string
 }

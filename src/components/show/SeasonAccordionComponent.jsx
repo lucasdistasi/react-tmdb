@@ -1,5 +1,6 @@
 import {SeasonsTableComponent} from "./SeasonsTableComponent";
 import {MoreSeasonsComponent} from "./MoreSeasonsComponent";
+import PropTypes from "prop-types";
 
 export const SeasonAccordionComponent = ({seasons, showId, originalPoster}) => {
 
@@ -39,4 +40,10 @@ export const SeasonAccordionComponent = ({seasons, showId, originalPoster}) => {
       </div>
     </div>
   )
+}
+
+SeasonAccordionComponent.propTypes = {
+  seasons: PropTypes.array,
+  showId: PropTypes.string,
+  originalPoster: PropTypes.string
 }

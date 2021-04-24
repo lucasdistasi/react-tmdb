@@ -21,5 +21,6 @@ export const NetworkGridComponent = ({networks, title}) => {
 }
 
 NetworkGridComponent.propTypes = {
-  networks: PropTypes.array
+  networks: PropTypes.array,
+  title: PropTypes.string
 }
