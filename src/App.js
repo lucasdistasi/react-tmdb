@@ -7,11 +7,6 @@ import {NotFoundComponent} from "./components/page/NotFoundComponent";
 import {SearchPage} from "./pages/SearchPage";
 import {PersonPage} from "./pages/PersonPage";
 
-/*
-  TODO
-   - Maybe add a carousel for the home page component
- */
-
 function App() {
   return (
     <Router>

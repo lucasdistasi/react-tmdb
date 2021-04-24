@@ -9,6 +9,8 @@ export const FooterComponent = () => {
               <img className="w-full h-16 mb-5"
                    src="/tmdb-logo.svg"
                    alt="The movie database logo"/>
+              <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+              <p>All the information provided in this application it's retrieved by TMDb.</p>
             </div>
           </div>
         </div>
