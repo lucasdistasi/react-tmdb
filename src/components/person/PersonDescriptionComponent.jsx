@@ -1,5 +1,5 @@
 import {getPosterPath} from "../../constants/constants";
-import {faBirthdayCake, faMapMarker, faCircle, faSkullCrossbones} from "@fortawesome/free-solid-svg-icons";
+import {faBirthdayCake, faMapMarker, faCircle, faSkullCrossbones, faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {PERSON_WITHOUT_IMAGE_BIG} from "../../constants/constants";
 import PropTypes from "prop-types";
@@ -7,6 +7,8 @@ import {ErrorComponent} from "../page/ErrorComponent";
 import {SpinnerComponent} from "../page/SpinnerComponent";
 
 export const PersonDescriptionComponent = ({person, isLoading, hasErrors}) => {
+
+  person && console.log(person)
 
   return (
     hasErrors ? <ErrorComponent /> : isLoading ? <SpinnerComponent color={"#00FD3BFF"} /> :
@@ -31,6 +33,13 @@ export const PersonDescriptionComponent = ({person, isLoading, hasErrors}) => {
           <div className="flex flex-row my-2">
             <FontAwesomeIcon icon={faCircle} className={"text-blue-900 mr-4 text-xl"}/>
             <p>{person.known_for_department}</p>
+          </div>
+        }
+        {
+          person.adult &&
+          <div className="flex flex-row my-2">
+            <FontAwesomeIcon icon={faExclamationTriangle} className={"text-red-500 mr-4 text-xl"}/>
+            <p>Adult Search</p>
           </div>
         }
         {
