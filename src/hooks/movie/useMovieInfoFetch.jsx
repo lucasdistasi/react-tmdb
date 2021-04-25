@@ -16,10 +16,11 @@ export const useMovieInfoFetch = (movieId) => {
                 .then(response => {
                     setMovie(response.data)
                 })
-                .catch(err => console.log(err))
+                .catch(() => {
+                  _setError(true)
+                })
         } catch (error) {
             _setError(true)
-            console.log(error)
         } finally {
             setLoading(false)
         }

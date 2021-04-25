@@ -21,8 +21,7 @@ export const SeasonAccordionComponent = ({seasons, showId, originalPoster}) => {
                 <div className="tab w-full overflow-hidden border-t" key={season.id}>
                   <input className="absolute opacity-0" id={season.id} type="checkbox" name="tabs"/>
                   <label className="block p-5 leading-normal cursor-pointer"
-                         htmlFor={season.id}
-                         onClick={() => console.log("fetch data from season ...")}>
+                         htmlFor={season.id}>
                     {season.name}
                   </label>
                   <div className="tab-content overflow-hidden border-l-2 bg-gray-100 border-indigo-500 leading-normal">

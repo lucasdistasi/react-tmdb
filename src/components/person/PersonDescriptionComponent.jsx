@@ -8,8 +8,6 @@ import {SpinnerComponent} from "../page/SpinnerComponent";
 
 export const PersonDescriptionComponent = ({person, isLoading, hasErrors}) => {
 
-  person && console.log(person)
-
   return (
     hasErrors ? <ErrorComponent /> : isLoading ? <SpinnerComponent color={"#00FD3BFF"} /> :
 

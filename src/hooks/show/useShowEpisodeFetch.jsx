@@ -14,7 +14,6 @@ export const useShowEpisodeFetch = ({showId, seasonNumber}) => {
      axios.get(getShowEpisodesInfo(showId, seasonNumber))
        .then(response => setEpisodes(response.data.episodes))
     } catch (error) {
-      console.log(error)
       _setError(true)
     } finally {
       setLoading(false)

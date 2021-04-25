@@ -17,7 +17,6 @@ export const useShowInfoFetch = ({showId}) => {
           setState(response.data)
         })
     } catch (error) {
-      console.log(error)
       _setError(true)
     } finally {
       setLoading(false)

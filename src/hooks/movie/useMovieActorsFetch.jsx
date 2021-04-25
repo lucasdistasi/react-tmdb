@@ -23,7 +23,6 @@ export const useMovieActorsFetch = (movieId) => {
               }))
           })
       } catch (error) {
-        console.log(error)
         _setError(true)
       } finally {
         setLoading(false)

@@ -22,7 +22,6 @@ export const useMovieDirectorsFetch = (movieId) => {
             }))
         })
     } catch (error) {
-      console.log(error)
       _setError(true)
     } finally {
       setLoading(false)
