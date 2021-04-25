@@ -6,11 +6,14 @@ export const BackToTopComponent = () => {
 
   //let backToTopButton = document.getElementById("scrollToTop")
 
-  window.onscroll = () => {
-    if (document.body.scrollTop > 1100 || document.documentElement.scrollTop > 1100) {
-      document.getElementById("scrollToTop").style.display = "block";
-    } else {
-      document.getElementById("scrollToTop").style.display = "none";
+  if (document.getElementById("scrollToTop")) {
+    let btn = document.getElementById("scrollToTop")
+    window.onscroll = () => {
+      if (document.body.scrollTop > 1100 || document.documentElement.scrollTop > 1100) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
     }
   }
 

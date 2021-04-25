@@ -59,5 +59,7 @@ export const TrailerComponent = ({trailers, elementId, elementType}) => {
 }
 
 TrailerComponent.propType = {
-  trailers: PropTypes.array
+  trailers: PropTypes.array,
+  elementId: PropTypes.number,
+  elementType: PropTypes.string
 }

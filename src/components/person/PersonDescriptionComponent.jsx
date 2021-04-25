@@ -3,10 +3,14 @@ import {faBirthdayCake, faMapMarker, faCircle, faSkullCrossbones} from "@fortawe
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {PERSON_WITHOUT_IMAGE_BIG} from "../../constants/constants";
 import PropTypes from "prop-types";
+import {ErrorComponent} from "../page/ErrorComponent";
+import {SpinnerComponent} from "../page/SpinnerComponent";
 
-export const PersonDescriptionComponent = ({person}) => {
+export const PersonDescriptionComponent = ({person, isLoading, hasErrors}) => {
 
   return (
+    hasErrors ? <ErrorComponent /> : isLoading ? <SpinnerComponent color={"#00FD3BFF"} /> :
+
     <div className="container mx-auto bg-gray-50 py-10 flex flex-col lg:flex-row justify-center pb-24">
 
       <img src={
@@ -65,5 +69,7 @@ export const PersonDescriptionComponent = ({person}) => {
 }
 
 PersonDescriptionComponent.prototype = {
-  person: PropTypes.object
+  person: PropTypes.object,
+  isLoading: PropTypes.bool,
+  hasErrors: PropTypes.bool
 }

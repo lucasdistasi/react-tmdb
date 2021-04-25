@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const SearchButtonComponent = ({callback}) => {
 
   return (
@@ -13,4 +15,8 @@ export const SearchButtonComponent = ({callback}) => {
       </span>
     </div>
   )
+}
+
+SearchButtonComponent.prototype = {
+  callback: PropTypes.func
 }

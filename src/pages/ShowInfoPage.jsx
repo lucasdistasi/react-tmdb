@@ -2,7 +2,6 @@ import {NavbarComponent} from "../components/page/NavbarComponent";
 import {FooterComponent} from "../components/page/FooterComponent";
 import {useEffect} from "react";
 import {ShowInfoComponent} from "../components/show/ShowInfoComponent";
-import {MovieInfoComponent} from "../components/movie/MovieInfoComponent";
 import {BackToTopComponent} from "../components/common/BackToTopComponent";
 
 export const ShowInfoPage = () => {

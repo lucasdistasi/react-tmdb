@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const SpinnerComponent = ({color = "#1E90FFFF"}) => {
 
   return (
@@ -6,4 +8,8 @@ export const SpinnerComponent = ({color = "#1E90FFFF"}) => {
       borderTopColor: color
     }}/>
   )
+}
+
+SpinnerComponent.prototype = {
+  color: PropTypes.string
 }
