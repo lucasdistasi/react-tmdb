@@ -11,7 +11,7 @@ export const PERSON_WITHOUT_IMAGE = `${process.env.PUBLIC_URL}/person-without-im
 export const PERSON_WITHOUT_IMAGE_BIG = `${process.env.PUBLIC_URL}/person-without-image-big.jpg`
 
 export const getPosterPath = (size, imgUri) => {
-  return `https://image.tmdb.org/t/p/${size}${imgUri}`
+  return imgUri ? `https://image.tmdb.org/t/p/${size}${imgUri}` : NO_POSTER
 }
 
 export const getProfilePictureUrl = (profilePicture) => {

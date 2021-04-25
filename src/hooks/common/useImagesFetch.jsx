@@ -13,7 +13,11 @@ export const useImagesFetch = (elementId, elementType) => {
     try {
       axios.get(getImages(elementId, elementType))
         .then(response => {
-          setImage(response.data.backdrops)
+          if (response.data.backdrops && response.data.backdrops.length > 0) {
+            setImage(response.data.backdrops)
+          } else {
+            setImage(response.data.posters)
+          }
         })
         .catch(() => {
           setErrorImage(true)
