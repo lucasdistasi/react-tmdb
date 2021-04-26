@@ -20,7 +20,7 @@ export const useSearchFetch = () => {
         .then(response => {
           setData(prev => ({
             ...prev,
-              elements: [...prev.elements, response.data.results],
+            elements: [...prev.elements, response.data.results],
             currentPage: response.data.page,
             totalPages: response.data.total_pages
           }))

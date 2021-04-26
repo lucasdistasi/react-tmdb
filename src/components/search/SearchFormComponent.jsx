@@ -5,12 +5,8 @@ import {SearchButtonComponent} from "./elements/SearchButtonComponent";
 import {useSearchFetch} from "../../hooks/search/useSearchFetch";
 import {useState} from "react";
 import Swal from "sweetalert2";
-import {ErrorComponent} from "../page/ErrorComponent";
-import {NoResultsComponent} from "./NoResultsComponent";
-import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
 import {search, searchByPage} from "../../constants/constants";
-import {PeopleGridComponent} from "../common/PeopleGridComponent";
-import {filterDuplicatedElements} from "../../constants/constants";
+import {SearchResultsComponent} from "./elements/SearchResultsComponent";
 
 export const SearchFormComponent = () => {
 
@@ -26,8 +22,6 @@ export const SearchFormComponent = () => {
   const [didSearch, setDidSearch] = useState(false)
   const [searchCriteria, setSearchCriteria] = useState()
   const [{data, _error, loading}, fetchData] = useSearchFetch()
-
-  let searchResults = []
 
   const fetchSearchData = (isSearchLoadMore) => {
     let name = document.getElementById("input-name").value
@@ -100,36 +94,15 @@ export const SearchFormComponent = () => {
           </div>
         </div>
       </div>
-      {
-        _error.hasError && <ErrorComponent/>
-      }
-      {
-        data && data.elements && data.elements.forEach(elements => elements.forEach(element => searchResults.push(element)))
-      }
-      {
-        didSearch && searchResults && searchResults.length > 0 &&
-        searchCriteria === "person" ?
 
-          <PeopleGridComponent
-            people={filterDuplicatedElements(searchResults)}
-            title={"Search results"}
-            loadMoreFunction={() => fetchSearchData(true)}
-            isLoading={loading}
-            currentPage={data.currentPage}
-            totalPages={data.totalPages}/> :
+      <SearchResultsComponent
+        _error={_error}
+        loading={loading}
+        data={data}
+        didSearch={didSearch}
+        searchCriteria={searchCriteria}
+        callback={() => fetchSearchData(true)}/>
 
-          <CatalogueGridComponent
-            elements={filterDuplicatedElements(searchResults)}
-            loadMoreFunction={() => fetchSearchData(true)}
-            isLoading={loading}
-            currentPage={data.currentPage}
-            totalPages={data.totalPages}
-            title={"Search results"}
-            elementType={searchCriteria === "tv" ? "shows" : "movies"}/>
-      }
-      {
-        didSearch && searchResults && searchResults.length <= 0 && <NoResultsComponent/>
-      }
     </div>
   )
 }
