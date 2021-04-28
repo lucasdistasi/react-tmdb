@@ -4,7 +4,7 @@ import {getShowInfo} from "../../constants/constants";
 
 export const useShowInfoFetch = ({showId}) => {
 
-  const [state, setState] = useState({})
+  const [data, setData] = useState({})
   const [loading, setLoading] = useState(false)
   const [_error, _setError] = useState(false)
 
@@ -14,7 +14,10 @@ export const useShowInfoFetch = ({showId}) => {
     try {
       axios.get(getShowInfo(showId))
         .then(response => {
-          setState(response.data)
+          setData({
+            id: showId,
+            info: response.data
+          })
         })
     } catch (error) {
       _setError(true)
@@ -27,5 +30,5 @@ export const useShowInfoFetch = ({showId}) => {
     fetchShowInfo()
   }, [fetchShowInfo])
 
-  return [state, loading, _error]
+  return [data, loading, _error]
 }

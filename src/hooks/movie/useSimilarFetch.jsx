@@ -4,7 +4,7 @@ import {getSimilar} from "../../constants/constants";
 
 export const useSimilarFetch = (elementType, elementId) => {
 
-  const [state, setState] = useState({elements: []})
+  const [similarMovies, setSimilarMovies] = useState({elements: []})
   const [similarLoading, setSimilarLoading] = useState(false)
   const [_error, _setError] = useState(false)
 
@@ -15,7 +15,7 @@ export const useSimilarFetch = (elementType, elementId) => {
     try {
       await axios.get(endpoint)
         .then(response => {
-          setState(() => ({
+          setSimilarMovies(() => ({
             elements: [...response.data.results],
             currentPage: response.data.page,
             totalPages: response.data.total_pages
@@ -32,5 +32,5 @@ export const useSimilarFetch = (elementType, elementId) => {
     fetchSimilarElements(getSimilar(elementType, elementId));
   }, [fetchSimilarElements, elementType, elementId])
 
-  return [{state, similarLoading, _error}, fetchSimilarElements]
+  return [{similarMovies, similarLoading, _error}, fetchSimilarElements]
 }

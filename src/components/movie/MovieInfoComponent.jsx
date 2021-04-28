@@ -32,7 +32,7 @@ export const MovieInfoComponent = () => {
   }, loading, _error] = useMovieInfoFetch(movieId)
   const {directors} = useMovieDirectorsFetch(movieId)
   const {actors} = useMovieActorsFetch(movieId)
-  const [{state, similarMoviesLoading}] = useSimilarFetch("movie", movieId)
+  const [{similarMovies, similarMoviesLoading}] = useSimilarFetch("movie", movieId)
   const [{reviews, loadingReviews, _errorReviews}] = useReviewsFetch(movieId, "movie")
   const [trailers] = useTrailerFetch(movieId, "movie")
 
@@ -115,10 +115,10 @@ export const MovieInfoComponent = () => {
             currentPage={0}
             totalPages={0}/>
           <ReviewsGridComponent reviews={reviews} isLoading={loadingReviews} hasErrors={_errorReviews}/>
-          <CatalogueGridComponent elements={state.elements}
+          <CatalogueGridComponent elements={similarMovies.elements}
                                   isLoading={similarMoviesLoading}
-                                  currentPage={state.currentPage}
-                                  totalPages={state.totalPages}
+                                  currentPage={similarMovies.currentPage}
+                                  totalPages={similarMovies.totalPages}
                                   title="Similar Movies"
                                   elementType="movies"/>
         </div>
