@@ -5,6 +5,7 @@ import {getYoutubeVideos} from "../../constants/constants";
 export const useTrailerFetch = (elementId, elementType) => {
 
   const [trailers, setTrailers] = useState([])
+  const [trailersError, setTrailerError] = useState(false)
 
   const fetchTrailers = useCallback(() => {
     try {
@@ -13,8 +14,11 @@ export const useTrailerFetch = (elementId, elementType) => {
         .then(response => {
           setTrailers(response.data.results.filter(trailer => trailer.site.includes("YouTube")))
         })
+        .catch(() => {
+          setTrailerError(true)
+        })
     } catch (error) {
-
+      setTrailerError(true)
     }
   }, [elementId, elementType])
 
@@ -22,5 +26,5 @@ export const useTrailerFetch = (elementId, elementType) => {
     fetchTrailers()
   }, [fetchTrailers])
 
-  return [trailers]
+  return [trailers, trailersError]
 }

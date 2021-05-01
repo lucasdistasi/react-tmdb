@@ -12,8 +12,8 @@ export const SearchFormComponent = () => {
 
   /*
       TODO
-       - Test the search functionality
        - Search if there is an endpoint to retrieve most popular movies/shows from a person
+       - https://developers.themoviedb.org/3/people/get-person-combined-credits
    */
 
   // We need to save in the state if the user has made at least 1 search
@@ -42,11 +42,11 @@ export const SearchFormComponent = () => {
   }
 
   function isNameValid(name) {
-    if (!/^[A-Za-z0-9\s]{2,20}$/.test(name)) {
+    if (!/^[A-Za-z0-9\s]{2,40}$/.test(name)) {
       Swal.fire({
         icon: 'error',
         title: 'Invalid name',
-        text: 'Name must have between 2 and 20 characters. Only letters and numbers are allowed'
+        text: 'Name must have between 2 and 40 characters. Only letters and numbers are allowed'
       })
       return false
     }

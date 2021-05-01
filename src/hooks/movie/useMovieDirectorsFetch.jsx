@@ -21,6 +21,9 @@ export const useMovieDirectorsFetch = (movieId) => {
               return director.department.includes("Directing")
             }))
         })
+        .catch(() => {
+          _setError(true)
+        })
     } catch (error) {
       _setError(true)
     } finally {

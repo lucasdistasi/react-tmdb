@@ -111,3 +111,7 @@ export const getPosterVideoImage = (images) => {
     return getPosterPath("w780", imagesWithFilePath[randomImage].file_path)
   }
 }
+
+export const getPersonPopularCredits = (personId) => {
+  return `https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+}

@@ -27,7 +27,7 @@ export const MovieInfoComponent = () => {
 
   const {movieId} = useParams();
   const [{
-    backdrop_path, title, tagline, overview, vote_average, budget, runtime, release_date, genres,
+    adult, backdrop_path, title, tagline, overview, vote_average, budget, runtime, release_date, genres,
     production_companies, status, homepage, revenue
   }, loading, _error] = useMovieInfoFetch(movieId)
   const {directors} = useMovieDirectorsFetch(movieId)
@@ -47,6 +47,10 @@ export const MovieInfoComponent = () => {
   })
 
   useEffect(() => {
+    if (adult) {
+      window.location.replace("/")
+    }
+
     scrollToTop()
   })
 
@@ -65,7 +69,7 @@ export const MovieInfoComponent = () => {
             <div className="text-center">
               <h1 className="text-7xl py-6">{title}</h1>
               <TaglineComponent tagline={tagline}/>
-              <TrailerComponent trailers={trailers} elementId={movieId} elementType={"movie"} />
+              <TrailerComponent trailers={trailers} elementId={movieId} elementType={"movie"}/>
               <p className="text-lg mx-28 mt-12 pb-8">{overview}</p>
             </div>
             <div className="flex flex-col flex-wrap lg:flex-row items-center lg:justify-between mx-16 mt-10">

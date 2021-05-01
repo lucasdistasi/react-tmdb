@@ -22,6 +22,9 @@ export const useMovieActorsFetch = (movieId) => {
                 return actor.known_for_department.includes("Acting") && actor.popularity >= 2
               }))
           })
+          .catch(() => {
+            _setError(true)
+          })
       } catch (error) {
         _setError(true)
       } finally {

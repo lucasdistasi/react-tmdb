@@ -15,7 +15,11 @@ export const PersonPage = () => {
   return (
     <>
       <NavbarComponent/>
-      <PersonDescriptionComponent person={personInformation} isLoading={loadingPersonInformation} hasErrors={errorPersonInformation} />
+      <PersonDescriptionComponent
+        person={personInformation}
+        isLoading={loadingPersonInformation}
+        hasErrors={errorPersonInformation}
+        personId={personId}/>
       <FooterComponent/>
     </>
   )
