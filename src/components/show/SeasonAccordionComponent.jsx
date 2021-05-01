@@ -43,6 +43,6 @@ export const SeasonAccordionComponent = ({seasons, showId, originalPoster}) => {
 
 SeasonAccordionComponent.propTypes = {
   seasons: PropTypes.array,
-  showId: PropTypes.string,
+  showId: PropTypes.number,
   originalPoster: PropTypes.string
 }

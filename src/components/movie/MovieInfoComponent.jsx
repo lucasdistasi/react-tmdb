@@ -6,7 +6,7 @@ import {SpinnerComponent} from "../page/SpinnerComponent";
 import {ErrorComponent} from "../page/ErrorComponent";
 import {useMovieDirectorsFetch} from "../../hooks/movie/useMovieDirectorsFetch";
 import {useMovieActorsFetch} from "../../hooks/movie/useMovieActorsFetch";
-import {getPosterPath} from "../../constants/constants";
+import {filterDuplicatedElements, getPosterPath} from "../../constants/constants";
 import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
 import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
 import {useEffect} from "react";
@@ -101,14 +101,14 @@ export const MovieInfoComponent = () => {
             </div>
           </div>
           <PeopleGridComponent
-            people={directors}
+            people={filterDuplicatedElements(directors)}
             title={"Directors"}
             loadMoreFunction={null}
             isLoading={loading}
             currentPage={0}
             totalPages={0}/>
           <PeopleGridComponent
-            people={actors}
+            people={filterDuplicatedElements(actors)}
             title={"Popular Actors / Actresses"}
             loadMoreFunction={null}
             isLoading={loading}

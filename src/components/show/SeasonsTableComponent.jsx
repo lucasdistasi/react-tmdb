@@ -74,5 +74,5 @@ export const SeasonsTableComponent = ({season, showId}) => {
 
 SeasonsTableComponent.propTypes = {
   season: PropTypes.object,
-  showId: PropTypes.string
+  showId: PropTypes.number
 }
