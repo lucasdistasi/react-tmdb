@@ -9,7 +9,6 @@ export const useTrailerFetch = (elementId, elementType) => {
 
   const fetchTrailers = useCallback(() => {
     try {
-      console.log(">>> Fetching trailers... <<<")
       axios.get(getYoutubeVideos(elementId, elementType))
         .then(response => {
           setTrailers(response.data.results.filter(trailer => trailer.site.includes("YouTube")))
@@ -23,8 +22,22 @@ export const useTrailerFetch = (elementId, elementType) => {
   }, [elementId, elementType])
 
   useEffect(() => {
-    fetchTrailers()
-  }, [fetchTrailers])
+    let name = `${elementType}_${elementId}_trailers`;
+
+    if (localStorage[name]) {
+      console.log("Fetching trailers from local storage")
+      setTrailers(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching trailers from TMDB API")
+      fetchTrailers()
+    }
+  }, [fetchTrailers, elementId, elementType])
+
+  useEffect(() => {
+    let name = `${elementType}_${elementId}_trailers`;
+
+    localStorage.setItem(name, JSON.stringify(trailers))
+  }, [elementType, elementId, trailers])
 
   return [trailers, trailersError]
 }

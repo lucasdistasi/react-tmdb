@@ -13,7 +13,6 @@ export const useMovieDirectorsFetch = (movieId) => {
     setLoading(true)
 
     try {
-      console.log(">>> Fetching directors <<<")
       axios.get(getMovieCredits(movieId))
         .then(response => {
           setDirectors(
@@ -32,8 +31,22 @@ export const useMovieDirectorsFetch = (movieId) => {
   }, [movieId])
 
   useEffect(() => {
-    fetchDirectors()
-  }, [fetchDirectors])
+    let name = `${movieId}_directors`;
+
+    if (localStorage[name]) {
+      console.log("Fetching directors from local storage")
+      setDirectors(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching directors from TMDB API")
+      fetchDirectors()
+    }
+  }, [fetchDirectors, movieId])
+
+  useEffect(() => {
+    let name = `${movieId}_directors`;
+
+    localStorage.setItem(name, JSON.stringify(directors))
+  }, [movieId, directors])
 
   return {directors, loading, _error}
 }

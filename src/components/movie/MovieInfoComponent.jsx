@@ -8,7 +8,7 @@ import {useMovieDirectorsFetch} from "../../hooks/movie/useMovieDirectorsFetch";
 import {useMovieActorsFetch} from "../../hooks/movie/useMovieActorsFetch";
 import {filterDuplicatedElements, getPosterPath} from "../../constants/constants";
 import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
-import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
+import {useSimilarFetch} from "../../hooks/common/useSimilarFetch";
 import {useEffect} from "react";
 import {GenreComponent} from "../common/GenreComponent";
 import {ProductionCompaniesComponent} from "../common/ProductionCompaniesComponent";

@@ -30,8 +30,22 @@ export const useReviewsFetch = (elementId, elementType) => {
   }, [elementId, elementType])
 
   useEffect(() => {
-    fetchReviews()
+    let name = `${elementType}_${elementId}_reviews`;
+
+    if (localStorage[name]) {
+      console.log("Fetching reviews from local storage")
+      setReview(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching reviews from TMDB API")
+      fetchReviews()
+    }
   }, [fetchReviews, elementId, elementType])
+
+  useEffect(() => {
+    let name = `${elementType}_${elementId}_reviews`;
+
+    localStorage.setItem(name, JSON.stringify(reviews))
+  }, [elementType, elementId, reviews])
 
   return [{reviews, loadingReviews, _errorReviews}]
 }

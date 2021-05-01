@@ -9,7 +9,6 @@ export const useImagesFetch = (elementId, elementType) => {
 
 
   const getAllImages = useCallback(() => {
-    console.log(">>> Fetching images <<<")
     try {
       axios.get(getImages(elementId, elementType))
         .then(response => {
@@ -28,8 +27,23 @@ export const useImagesFetch = (elementId, elementType) => {
   }, [elementId, elementType])
 
   useEffect(() => {
-    getAllImages()
+    let name = `${elementType}_${elementId}_images`;
+
+    if (localStorage[name]) {
+      console.log("Fetching images from local storage")
+      setImage(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching images from TMDB API")
+      getAllImages()
+    }
+
   }, [getAllImages])
+
+  useEffect(() => {
+    let name = `${elementType}_${elementId}_images`;
+
+    localStorage.setItem(name, JSON.stringify(images))
+  }, [elementType, elementId, images])
 
   return [images, errorImages]
 }

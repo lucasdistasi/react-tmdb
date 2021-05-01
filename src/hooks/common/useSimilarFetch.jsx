@@ -9,7 +9,6 @@ export const useSimilarFetch = (elementType, elementId) => {
   const [_error, _setError] = useState(false)
 
   const fetchSimilarElements = useCallback(async (endpoint) => {
-    console.log(">>> fetching similar elements <<<")
     setSimilarLoading(true)
 
     try {
@@ -29,8 +28,23 @@ export const useSimilarFetch = (elementType, elementId) => {
   }, [])
 
   useEffect(() => {
-    fetchSimilarElements(getSimilar(elementType, elementId));
+    let name = `${elementType}_${elementId}_similar`
+
+    if (localStorage[name]) {
+      console.log("Fetching Similars from local storage")
+      setSimilarMovies(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching Similars from TMDB API")
+      fetchSimilarElements(getSimilar(elementType, elementId));
+    }
+
   }, [fetchSimilarElements, elementType, elementId])
+
+  useEffect(() => {
+    let name = `${elementType}_${elementId}_similar`
+
+    localStorage.setItem(name, JSON.stringify(similarMovies))
+  }, [elementType, elementId, similarMovies])
 
   return [{similarMovies, similarLoading, _error}, fetchSimilarElements]
 }

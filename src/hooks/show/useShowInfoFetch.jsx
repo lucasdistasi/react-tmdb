@@ -27,8 +27,18 @@ export const useShowInfoFetch = ({showId}) => {
   }, [showId])
 
   useEffect(() => {
-    fetchShowInfo()
-  }, [fetchShowInfo])
+    if (localStorage[showId]) {
+      console.log("Fetching from Local Storage")
+      setData(JSON.parse(localStorage[showId]))
+    } else {
+      console.log("Fetching from TMDB API")
+      fetchShowInfo()
+    }
+  }, [fetchShowInfo, showId])
+
+  useEffect(() => {
+    localStorage.setItem(showId, JSON.stringify(data))
+  }, [showId, data])
 
   return [data, loading, _error]
 }

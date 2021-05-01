@@ -16,7 +16,6 @@ export const HeroComponent = () => {
   }
 
   const fetchData = useCallback(() => {
-    console.log(">>> Feching data <<<")
     const URI = `${HERO_URI}${getRandomPage()}`
     setLoading(true)
     axios.get(URI)

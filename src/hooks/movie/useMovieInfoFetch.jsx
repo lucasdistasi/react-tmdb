@@ -27,8 +27,18 @@ export const useMovieInfoFetch = (movieId) => {
     }, [movieId])
 
     useEffect(() => {
+      if (localStorage[movieId]) {
+        console.log("Fetching from Local Storage")
+        setMovie(JSON.parse(localStorage[movieId]))
+      } else {
+        console.log("Fetching from TMDB API")
         fetchMovieInfo();
-    }, [fetchMovieInfo])
+      }
+    }, [fetchMovieInfo, movieId])
+
+  useEffect(() => {
+    localStorage.setItem(movieId, JSON.stringify(movie))
+  }, [movieId, movie])
 
     return [movie, loading, _error]
 }

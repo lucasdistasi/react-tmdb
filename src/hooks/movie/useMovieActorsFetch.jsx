@@ -10,29 +10,41 @@ export const useMovieActorsFetch = (movieId) => {
   const [_error, _setError] = useState(false)
 
   useEffect(() => {
-    const fetchActors = () => {
-      setLoading(true)
+    let name = `${movieId}_actors`;
 
-      try {
-        console.log(">>> Fetching actors <<<")
-        axios.get(getMovieCredits(movieId))
-          .then(response => {
-            setActors(
-              response.data.cast.filter(actor => {
-                return actor.known_for_department.includes("Acting") && actor.popularity >= 2
-              }))
-          })
-          .catch(() => {
-            _setError(true)
-          })
-      } catch (error) {
-        _setError(true)
-      } finally {
-        setLoading(false)
+    if (localStorage[name]) {
+      console.log("Fetching actors from local storage")
+      setActors(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching actors from TMDB API")
+      const fetchActors = () => {
+        setLoading(true)
+
+        try {
+          axios.get(getMovieCredits(movieId))
+            .then(response => {
+              setActors(
+                response.data.cast.filter(actor => {
+                  return actor.known_for_department.includes("Acting") && actor.popularity >= 2
+                }))
+            })
+            .catch(() => {
+              _setError(true)
+            })
+        } catch (error) {
+          _setError(true)
+        } finally {
+          setLoading(false)
+        }
       }
+      fetchActors()
     }
-    fetchActors()
   }, [movieId])
+
+  useEffect(() => {
+    let name = `${movieId}_actors`;
+    localStorage.setItem(name, JSON.stringify(actors))
+  })
 
   return {actors, loading, _error}
 }

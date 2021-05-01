@@ -17,7 +17,7 @@ import {ReviewsGridComponent} from "../common/ReviewsGridComponent";
 import {useReviewsFetch} from "../../hooks/common/useReviewsFetch";
 import {useTrailerFetch} from "../../hooks/common/useTrailerFetch";
 import {TrailerComponent} from "../common/TrailerComponent";
-import {useSimilarFetch} from "../../hooks/movie/useSimilarFetch";
+import {useSimilarFetch} from "../../hooks/common/useSimilarFetch";
 import {CatalogueGridComponent} from "../common/CatalogueGridComponent";
 import {scrollToTop} from "../../constants/constants";
 import {useEffect} from "react";
