@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const PersonInfoDescriptionComponent = ({person}) => {
 
   return (
@@ -13,4 +15,8 @@ export const PersonInfoDescriptionComponent = ({person}) => {
       }
     </>
   )
+}
+
+PersonInfoDescriptionComponent.prototype = {
+  person: PropTypes.object
 }

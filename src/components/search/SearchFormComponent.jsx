@@ -10,12 +10,6 @@ import {SearchResultsComponent} from "./elements/SearchResultsComponent";
 
 export const SearchFormComponent = () => {
 
-  /*
-      TODO
-       - Search if there is an endpoint to retrieve most popular movies/shows from a person
-       - https://developers.themoviedb.org/3/people/get-person-combined-credits
-   */
-
   // We need to save in the state if the user has made at least 1 search
   // in order to display the NoResultsComponent.
   // Without this, the component will be displayed when the page renders

@@ -1,4 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 export const PersonIconComponent = ({text, faIcon, color}) => {
 
@@ -9,4 +10,10 @@ export const PersonIconComponent = ({text, faIcon, color}) => {
       <p>{text}</p>
     </div> : null
   )
+}
+
+PersonIconComponent.prototype = {
+  text: PropTypes.string,
+  faIcon: PropTypes.object,
+  color: PropTypes.string
 }

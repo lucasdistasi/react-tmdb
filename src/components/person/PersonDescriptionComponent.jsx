@@ -83,5 +83,6 @@ export const PersonDescriptionComponent = ({person, isLoading, hasErrors, person
 PersonDescriptionComponent.prototype = {
   person: PropTypes.object,
   isLoading: PropTypes.bool,
-  hasErrors: PropTypes.bool
+  hasErrors: PropTypes.bool,
+  personId: PropTypes.number
 }
