@@ -25,7 +25,7 @@ export const useMovieActorsFetch = (movieId) => {
             .then(response => {
               setActors(
                 response.data.cast.filter(actor => {
-                  return actor.known_for_department.includes("Acting") && actor.popularity >= 2
+                  return actor.known_for_department.includes("Acting") && actor.popularity >= 1
                 }))
             })
             .catch(() => {

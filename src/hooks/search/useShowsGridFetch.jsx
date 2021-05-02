@@ -13,9 +13,15 @@ export const useShowsGridFetch = (props) => {
     try {
       await axios.get(endpoint)
         .then(response => {
+          // TMDB API DOES NOT RETRIEVE AN ADULT FIELD FOR TV SHOWS.
+          // I noticed that some adult Tv Shows do not have an Overview.
+          // We are going to filter those results. However, this does not ensure
+          // that all adult Tv Shows are not going to be displayed.
+          let validShows = response.data.results.filter(show => show.overview.length !== "")
+
           setShows(prev => ({
             ...prev,
-            elements: [...prev.elements, ...response.data.results],
+            elements: [...prev.elements, ...validShows],
             currentPage: response.data.page,
             totalPages: response.data.total_pages
           }))

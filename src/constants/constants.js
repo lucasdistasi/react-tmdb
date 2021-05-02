@@ -2,7 +2,7 @@ export const HERO_URI = `https://api.themoviedb.org/3/movie/top_rated?api_key=${
 
 export const POPULAR_MOVIES = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 
-export const POPULAR_SHOWS = ` https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
+export const POPULAR_SHOWS = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`
 
 export const NO_POSTER = `${process.env.PUBLIC_URL}/no-poster-light.jpg`
 

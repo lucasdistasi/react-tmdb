@@ -13,7 +13,7 @@ export const TrailerComponent = ({trailers, elementId, elementType}) => {
   const getRandomTrailer = () => {
     if (hasTrailers) {
       let randomTrailer = Math.floor(Math.random() * trailers.length)
-      return trailers[randomTrailer].key
+      return trailers[randomTrailer]
     }
   }
 
@@ -24,35 +24,35 @@ export const TrailerComponent = ({trailers, elementId, elementType}) => {
           <TrailerVideoComponent backgroundImage={getPosterVideoImage(images)}
                                  width={"1280px"}
                                  height={"720px"}
-                                 videoKey={getRandomTrailer() && getRandomTrailer()}/>
+                                 video={getRandomTrailer() && getRandomTrailer()}/>
         </MediaQuery>
 
         <MediaQuery minWidth={650} maxWidth={1359}>
           <TrailerVideoComponent backgroundImage={getPosterVideoImage(images)}
                                  width={"640px"}
                                  height={"480px"}
-                                 videoKey={getRandomTrailer() && getRandomTrailer()}/>
+                                 video={getRandomTrailer() && getRandomTrailer()}/>
         </MediaQuery>
 
         <MediaQuery minWidth={490} maxWidth={649}>
           <TrailerVideoComponent backgroundImage={getPosterVideoImage(images)}
                                  width={"480px"}
                                  height={"360px"}
-                                 videoKey={getRandomTrailer() && getRandomTrailer()}/>
+                                 video={getRandomTrailer() && getRandomTrailer()}/>
         </MediaQuery>
 
         <MediaQuery minWidth={330} maxWidth={489}>
           <TrailerVideoComponent backgroundImage={getPosterVideoImage(images)}
                                  width={"320px"}
                                  height={"180px"}
-                                 videoKey={getRandomTrailer() && getRandomTrailer()}/>
+                                 video={getRandomTrailer() && getRandomTrailer()}/>
         </MediaQuery>
 
         <MediaQuery minWidth={100} maxWidth={329}>
           <TrailerVideoComponent backgroundImage={getPosterVideoImage(images)}
                                  width={"120px"}
                                  height={"90px"}
-                                 videoKey={getRandomTrailer() && getRandomTrailer()}/>
+                                 video={getRandomTrailer() && getRandomTrailer()}/>
         </MediaQuery>
       </> : null
   )
