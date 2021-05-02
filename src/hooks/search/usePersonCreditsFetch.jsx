@@ -8,7 +8,7 @@ export const usePersonCreditsFetch = (personId) => {
   const [loadingCredits, setLoadingCredits] = useState(false)
   const [errorCredits, setErrorCredits] = useState(false)
 
-  const fecthPersonCredits = useCallback(() => {
+  const fetchPersonCredits = useCallback(() => {
     setLoadingCredits(true)
 
     try {
@@ -25,8 +25,8 @@ export const usePersonCreditsFetch = (personId) => {
   }, [personId])
 
   useEffect(() => {
-    fecthPersonCredits()
-  }, [fecthPersonCredits])
+    fetchPersonCredits()
+  }, [fetchPersonCredits])
 
   return [credits, loadingCredits, errorCredits]
 }

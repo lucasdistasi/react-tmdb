@@ -10,7 +10,6 @@ export const usePersonInformationFetch = (personId) => {
 
 
   const getPersonInformation = useCallback(() => {
-    console.log(">>> Fetching person info <<<")
     setLoadingPersonInformation(true)
     try {
       axios.get(getPersonInfo(personId))
@@ -28,8 +27,22 @@ export const usePersonInformationFetch = (personId) => {
   }, [personId])
 
   useEffect(() => {
-    getPersonInformation()
+    let name = `person_${personId}`
+
+    if (localStorage[name]) {
+      console.log("Fetching person info from local storage")
+      setPersonInformation(JSON.parse(localStorage[name]))
+    } else {
+      console.log("Fetching person info from TMDB API")
+      getPersonInformation()
+    }
   }, [getPersonInformation])
+
+  useEffect(() => {
+    let name = `person_${personId}`
+
+    localStorage.setItem(name, JSON.stringify(personInformation))
+  }, [personId, personInformation])
 
   return [personInformation, loadingPersonInformation, errorPersonInformation]
 }
