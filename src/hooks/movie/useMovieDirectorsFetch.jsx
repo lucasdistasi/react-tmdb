@@ -34,10 +34,8 @@ export const useMovieDirectorsFetch = (movieId) => {
     let name = `${movieId}_directors`;
 
     if (localStorage[name]) {
-      console.log("Fetching directors from local storage")
       setDirectors(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching directors from TMDB API")
       fetchDirectors()
     }
   }, [fetchDirectors, movieId])

@@ -13,10 +13,8 @@ export const useMovieActorsFetch = (movieId) => {
     let name = `${movieId}_actors`;
 
     if (localStorage[name]) {
-      console.log("Fetching actors from local storage")
       setActors(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching actors from TMDB API")
       const fetchActors = () => {
         setLoading(true)
 

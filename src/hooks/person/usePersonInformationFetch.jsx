@@ -30,10 +30,8 @@ export const usePersonInformationFetch = (personId) => {
     let name = `person_${personId}`
 
     if (localStorage[name]) {
-      console.log("Fetching person info from local storage")
       setPersonInformation(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching person info from TMDB API")
       getPersonInformation()
     }
   }, [getPersonInformation])

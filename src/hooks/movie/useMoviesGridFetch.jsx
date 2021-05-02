@@ -29,10 +29,8 @@ export const useMoviesGridFetch = (props) => {
 
   useEffect(() => {
     if (sessionStorage["popular_movies"]) {
-      console.log("Fecthing popular movies from session storage")
       setMovies(JSON.parse(sessionStorage["popular_movies"]))
     } else {
-      console.log("Fecthing popular movies from TMDB API")
       fetchData(props);
     }
   }, [fetchData, props])

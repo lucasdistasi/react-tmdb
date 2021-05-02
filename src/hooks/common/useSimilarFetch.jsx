@@ -31,10 +31,8 @@ export const useSimilarFetch = (elementType, elementId) => {
     let name = `${elementType}_${elementId}_similar`
 
     if (localStorage[name]) {
-      console.log("Fetching Similars from local storage")
       setSimilarMovies(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching Similars from TMDB API")
       fetchSimilarElements(getSimilar(elementType, elementId));
     }
 

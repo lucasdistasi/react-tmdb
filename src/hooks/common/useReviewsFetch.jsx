@@ -9,7 +9,6 @@ export const useReviewsFetch = (elementId, elementType) => {
   const [_errorReviews, _setErrorReviews] = useState(false)
 
   const fetchReviews = useCallback(() => {
-    console.log(">>> fetching reviews <<<")
     setLoadingReviews(true)
     try {
       axios.get(getReviews(elementId, elementType))
@@ -33,10 +32,8 @@ export const useReviewsFetch = (elementId, elementType) => {
     let name = `${elementType}_${elementId}_reviews`;
 
     if (localStorage[name]) {
-      console.log("Fetching reviews from local storage")
       setReview(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching reviews from TMDB API")
       fetchReviews()
     }
   }, [fetchReviews, elementId, elementType])

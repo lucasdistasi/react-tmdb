@@ -30,10 +30,8 @@ export const useImagesFetch = (elementId, elementType) => {
     let name = `${elementType}_${elementId}_images`;
 
     if (localStorage[name]) {
-      console.log("Fetching images from local storage")
       setImage(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching images from TMDB API")
       getAllImages()
     }
 

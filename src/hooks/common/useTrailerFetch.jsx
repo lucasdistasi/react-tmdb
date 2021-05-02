@@ -25,10 +25,8 @@ export const useTrailerFetch = (elementId, elementType) => {
     let name = `${elementType}_${elementId}_trailers`;
 
     if (localStorage[name]) {
-      console.log("Fetching trailers from local storage")
       setTrailers(JSON.parse(localStorage[name]))
     } else {
-      console.log("Fetching trailers from TMDB API")
       fetchTrailers()
     }
   }, [fetchTrailers, elementId, elementType])

@@ -35,10 +35,8 @@ export const useShowsGridFetch = (props) => {
 
   useEffect(() => {
     if (sessionStorage["popular_shows"]) {
-      console.log("Fecthing popular shows from session storage")
       setShows(JSON.parse(sessionStorage["popular_shows"]))
     } else {
-      console.log("Fecthing popular shows from TMDB API")
       fetchData(props);
     }
   }, [fetchData, props])
