@@ -1,35 +1,30 @@
 import {NavbarComponent} from "../components/page/NavbarComponent";
 import {FooterComponent} from "../components/page/FooterComponent";
 import {CatalogueGridComponent} from "../components/common/CatalogueGridComponent";
-import {useElementGridFetch} from "../hooks/common/useElementGridFetch";
-import {getShowByPage} from "../constants/constants";
+import {filterDuplicatedElements, getShowByPage} from "../constants/constants";
 import {POPULAR_SHOWS} from "../constants/constants";
 import {ErrorComponent} from "../components/page/ErrorComponent";
 import {BackToTopComponent} from "../components/common/BackToTopComponent";
+import {useShowsGridFetch} from "../hooks/search/useShowsGridFetch";
 
 export const ShowsPage = () => {
 
-  const [{state, loading, _error}, fetchData] = useElementGridFetch(POPULAR_SHOWS)
+  const [{shows, loading, _error}, fetchData] = useShowsGridFetch(POPULAR_SHOWS)
 
   const loadMoreFunction = () => {
-    fetchData(getShowByPage(state.currentPage))
+    fetchData(getShowByPage(shows.currentPage))
   }
-
-  let shows = []
-  state.elements.forEach(show => {
-    shows.push(show)
-  })
 
   return (
     <>
       <NavbarComponent/>
       {
         _error ? <ErrorComponent/> :
-          <CatalogueGridComponent elements={shows}
+          <CatalogueGridComponent elements={filterDuplicatedElements(shows.elements)}
                                   loadMoreFunction={loadMoreFunction}
                                   isLoading={loading}
-                                  currentPage={state.currentPage}
-                                  totalPages={state.totalPages}
+                                  currentPage={shows.currentPage}
+                                  totalPages={shows.totalPages}
                                   title="Popular Shows"
                                   elementType="shows"/>
       }

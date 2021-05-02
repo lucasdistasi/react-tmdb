@@ -3,7 +3,7 @@ import {HeroComponent} from "../components/page/HeroComponent";
 import {CatalogueGridComponent} from "../components/common/CatalogueGridComponent";
 import {FooterComponent} from "../components/page/FooterComponent";
 import {ErrorComponent} from "../components/page/ErrorComponent";
-import {useElementGridFetch} from "../hooks/common/useElementGridFetch"
+import {useMoviesGridFetch} from "../hooks/movie/useMoviesGridFetch"
 import {getMovieByPage} from "../constants/constants";
 import {POPULAR_MOVIES} from "../constants/constants";
 import {filterDuplicatedElements} from "../constants/constants";
@@ -11,10 +11,10 @@ import {BackToTopComponent} from "../components/common/BackToTopComponent";
 
 export const HomePage = () => {
 
-  const [{state, loading, _error}, fetchData] = useElementGridFetch(POPULAR_MOVIES)
+  const [{movies, loading, _error}, fetchData] = useMoviesGridFetch(POPULAR_MOVIES)
 
   const loadMoreMovies = () => {
-    fetchData(getMovieByPage(state.currentPage))
+    fetchData(getMovieByPage(movies.currentPage))
   }
 
   return (
@@ -24,11 +24,11 @@ export const HomePage = () => {
         _error ? <ErrorComponent/> :
           <>
             <HeroComponent/>
-            <CatalogueGridComponent elements={filterDuplicatedElements(state.elements)}
+            <CatalogueGridComponent elements={filterDuplicatedElements(movies.elements)}
                                     loadMoreFunction={loadMoreMovies}
                                     isLoading={loading}
-                                    currentPage={state.currentPage}
-                                    totalPages={state.totalPages}
+                                    currentPage={movies.currentPage}
+                                    totalPages={movies.totalPages}
                                     title="Popular Movies"
                                     elementType="movies"/>
           </>
