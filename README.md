@@ -35,8 +35,28 @@ TMDB API retrieve a big wide variety of movies and tv shows, including adult con
 I've tried my best to hide all adult content. 
 
 Through the search page you will be able to search for adult content (movies and people). 
-* For people, you WON'T be able to see his / her the movies / shows.
+* For people, you WON'T be able to see his/her  movies/shows.
 * For movies, you WON'T be able to see the movie description. You will be redirected to the home page.
 
 Sadly, TMDB does not provide an adult attribute for TV Shows. 
 * Even I've made an effort to avoid adult content to be displayed, some adult TV Shows might be displayed in the application. This is solely TMDB responsibility.
+
+# Videos
+
+### Home Page
+[![Alt text for your video](https://img.youtube.com/vi/HjndYZ5-oP0/0.jpg)](https://youtu.be/HjndYZ5-oP0)
+
+### Movie Page
+[![Alt text for your video](https://img.youtube.com/vi/cUqLIwOb15I/0.jpg)](https://youtu.be/cUqLIwOb15I)
+
+### Show Page
+[![Alt text for your video](https://img.youtube.com/vi/5dPpPW1bLAY/0.jpg)](https://youtu.be/5dPpPW1bLAY)
+
+### Shows Page
+[![Alt text for your video](https://img.youtube.com/vi/YsYRnQ56j6U/0.jpg)](https://youtu.be/YsYRnQ56j6U)
+
+### Person Page
+[![Alt text for your video](https://img.youtube.com/vi/fZZCzHbEMd4/0.jpg)](https://youtu.be/fZZCzHbEMd4)
+
+### Search Page
+[![Alt text for your video](https://img.youtube.com/vi/Su7YZcXDhKk/0.jpg)](https://youtu.be/Su7YZcXDhKk)
