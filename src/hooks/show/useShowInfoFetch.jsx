@@ -19,6 +19,7 @@ export const useShowInfoFetch = ({showId}) => {
             info: response.data
           })
         })
+        .catch(() => _setError(true))
     } catch (error) {
       _setError(true)
     } finally {

@@ -20,6 +20,7 @@ export const useMoviesGridFetch = (props) => {
             totalPages: response.data.total_pages
           }))
         })
+        .catch(() => _setError(true))
     } catch (error) {
       _setError(true)
     } finally {

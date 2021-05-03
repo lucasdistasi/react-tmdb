@@ -17,7 +17,7 @@ export const useShowsGridFetch = (props) => {
           // I noticed that some adult Tv Shows do not have an Overview.
           // We are going to filter those results. However, this does not ensure
           // that all adult Tv Shows are not going to be displayed.
-          let validShows = response.data.results.filter(show => show.overview.length !== "")
+          let validShows = response.data.results.filter(show => show.overview !== "")
 
           setShows(prev => ({
             ...prev,
@@ -26,6 +26,7 @@ export const useShowsGridFetch = (props) => {
             totalPages: response.data.total_pages
           }))
         })
+        .catch(() => _setError(true))
     } catch (error) {
       _setError(true)
     } finally {

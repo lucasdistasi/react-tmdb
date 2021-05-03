@@ -15,6 +15,7 @@ export const useShowEpisodeFetch = ({showId, seasonNumber}) => {
         .then(response => {
           setEpisodes(response.data.episodes)
         })
+        .catch(() => _setError(true))
     } catch (error) {
       _setError(true)
     } finally {
