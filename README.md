@@ -60,3 +60,9 @@ Sadly, TMDB does not provide an adult attribute for TV Shows.
 
 ### Search Page
 [![Alt text for your video](https://img.youtube.com/vi/Su7YZcXDhKk/0.jpg)](https://youtu.be/Su7YZcXDhKk)
+
+### Genres Page
+[![Alt text for your video](https://img.youtube.com/vi/cqIzums3ZA4/0.jpg)](https://youtu.be/cqIzums3ZA4)
+
+### Genre Results Page
+[![Alt text for your video](https://img.youtube.com/vi/cgtAJCeb1wQ/0.jpg)](https://youtu.be/cgtAJCeb1wQ)
