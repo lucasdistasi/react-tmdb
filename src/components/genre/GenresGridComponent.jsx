@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const GenresGridComponent = ({title, elements, additionalClass, type}) => {
 
@@ -25,4 +26,11 @@ export const GenresGridComponent = ({title, elements, additionalClass, type}) =>
       </div>
     </>
   )
+}
+
+GenresGridComponent.propTypes = {
+  title: PropTypes.string,
+  elements: PropTypes.array,
+  additionalClass: PropTypes.string,
+  type: PropTypes.string
 }
