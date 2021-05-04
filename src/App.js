@@ -6,6 +6,8 @@ import {ShowInfoPage} from "./pages/ShowInfoPage";
 import {NotFoundComponent} from "./components/page/NotFoundComponent";
 import {SearchPage} from "./pages/SearchPage";
 import {PersonPage} from "./pages/PersonPage";
+import {GenresPage} from "./pages/GenresPage";
+import {ElementsGenrePage} from "./pages/ElementsGenrePage";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path={"/shows/:showId"} exact={true} component={ShowInfoPage} />
         <Route path={"/people/:personId"} exact={true} component={PersonPage} />
         <Route path={"/search"} exact={true} component={SearchPage} />
+        <Route path={"/genres"} exact={true} component={GenresPage} />
+        <Route path={"/:elementType/genres/:genreId"} exact={true} component={ElementsGenrePage} />
         <Route component={NotFoundComponent} />
       </Switch>
     </Router>

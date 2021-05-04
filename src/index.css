@@ -204,3 +204,40 @@ body {
   cursor: pointer;
   padding: 15px;
 }
+
+/*
+ [ GENRE CARDS ]
+ */
+
+.movie-genre-card {
+  background-color: #1a4f76;
+}
+
+.tvshow-genre-card {
+  background-color: #10827e;
+}
+
+.genre-card {
+  transition: all 0.4s ease;
+}
+
+.genre-card:hover {
+  box-shadow: 10px 5px 25px black;
+  transform: scale(1.05);
+}
+
+.genre-card > div > span {
+  width: 50px;
+  height: 3px;
+  display: block;
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+.movie-genre-card > div > span {
+  background-color: #59c3e5;
+}
+
+.tvshow-genre-card > div > span {
+  background-color: #00ff04;
+}

@@ -115,3 +115,19 @@ export const getPosterVideoImage = (images) => {
 export const getPersonPopularCredits = (personId) => {
   return `https://api.themoviedb.org/3/person/${personId}/combined_credits?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
 }
+
+export const getMovieGenres = () => {
+  return `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+}
+
+export const getTvShowGenres = () => {
+  return `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+}
+
+export const getElementsByGenre = (type, genreId) => {
+  return `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&sort_by=popularity.desc&include_adult=false&page=1&with_genres=${genreId}`
+}
+
+export const getElementsByGenreAndPage = (type, genreId, currentPage) => {
+  return `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&sort_by=popularity.desc&include_adult=false&page=${currentPage + 1}&with_genres=${genreId}`
+}

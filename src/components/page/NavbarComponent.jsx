@@ -65,6 +65,16 @@ export const NavbarComponent = () => {
                       Search
                     </Link>
                 }
+                {
+                  itIsCurrentPath("/genres") ?
+                    <Link to="/genres" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                      Genres
+                    </Link>
+                    :
+                    <Link to="/genres" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                      Genres
+                    </Link>
+                }
               </div>
             </div>
           </div>
@@ -100,6 +110,16 @@ export const NavbarComponent = () => {
               :
               <Link to="/search" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Search
+              </Link>
+          }
+          {
+            itIsCurrentPath("/genres") ?
+              <Link to="/genres" className="tmdb-blue text-white px-3 py-2 rounded-md text-sm font-medium font-bold" aria-current="page">
+                Genres
+              </Link>
+              :
+              <Link to="/genres" className="text-gray-300 hover_tmdb-blue hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Genres
               </Link>
           }
         </div>
