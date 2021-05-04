@@ -22,7 +22,10 @@ export const SearchFormComponent = () => {
     let chosenCriteria = document.getElementById("dropdown-criteria").value
     let isAdultSearch = document.getElementById("adult-only").checked || false
 
-    if (isNameValid(name) && isChosenCriteriaValid(chosenCriteria) && !isSearchLoadMore) {
+    if (isNameValid(name) &&
+          isChosenCriteriaValid(chosenCriteria) &&
+          !isSearchLoadMore &&
+          nonAdultMovieNorAdultShow(chosenCriteria, isAdultSearch)) {
       setDidSearch(true)
       const URI = search(isAdultSearch, chosenCriteria, name)
       fetchData(URI, isSearchLoadMore)
@@ -33,6 +36,19 @@ export const SearchFormComponent = () => {
       const URI = searchByPage(isAdultSearch, chosenCriteria, name, data.currentPage)
       fetchData(URI, isSearchLoadMore)
     }
+  }
+
+  function nonAdultMovieNorAdultShow(criteria, isAdultSearch) {
+    if (isAdultSearch && criteria !== "person") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Search',
+        text: 'You can not longer search for adult movies / shows'
+      })
+      return false
+    }
+
+    return true;
   }
 
   function isNameValid(name) {
