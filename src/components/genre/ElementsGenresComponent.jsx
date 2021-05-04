@@ -5,7 +5,6 @@ import {filterDuplicatedElements, getElementsByGenre, getElementsByGenreAndPage}
 import {ErrorComponent} from "../page/ErrorComponent";
 import {useMovieGenresFetch} from "../../hooks/genre/useMovieGenresFetch";
 import {useShowsGenresFetch} from "../../hooks/genre/useShowsGenresFetch";
-import {SpinnerComponent} from "../page/SpinnerComponent";
 
 export const ElementsGenresComponent = () => {
 
@@ -40,8 +39,12 @@ export const ElementsGenresComponent = () => {
     fetchDataByGenre(getElementsByGenreAndPage(urlTypeParam, genreId, data.currentPage))
   }
 
+  if (data && data.isInvalid) {
+    history.push("/404")
+  }
+
   return (
-    _error ? <ErrorComponent /> : loading ? <SpinnerComponent/> :
+    _error ? <ErrorComponent /> :
     <CatalogueGridComponent
       elements={filterDuplicatedElements(data.elements)}
       loadMoreFunction={loadMoreFunction}

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useElementsByGenreFetch = (endpoint, type, genreId) => {
 
-  const [data, setData] = useState({elements: []})
+  const [data, setData] = useState({elements: [], isInvalid: false})
   const [_error, _setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -13,13 +13,13 @@ export const useElementsByGenreFetch = (endpoint, type, genreId) => {
     try {
       await axios.get(endpoint)
         .then(response => {
-          console.log(response)
           setData(prev => ({
             ...prev,
             elements: [...prev.elements, ...response.data.results],
             currentPage: response.data.page,
             totalPages: response.data.total_pages,
-            elementType: type
+            elementType: type,
+            isInvalid: response.data.results <= 0
           }))
         })
         .catch(() => _setError(true))
@@ -58,7 +58,7 @@ export const useElementsByGenreFetch = (endpoint, type, genreId) => {
       let name = `shows_genres_${genreId}`
       localStorage.setItem(name, JSON.stringify(data))
     }
-  })
+  }, [data, genreId, type])
 
   return [{data, _error, loading}, fetchDataByGenre]
 }
