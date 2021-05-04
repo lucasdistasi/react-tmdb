@@ -34,7 +34,7 @@ export const usePersonInformationFetch = (personId) => {
     } else {
       getPersonInformation()
     }
-  }, [getPersonInformation])
+  }, [getPersonInformation, personId])
 
   useEffect(() => {
     let name = `person_${personId}`

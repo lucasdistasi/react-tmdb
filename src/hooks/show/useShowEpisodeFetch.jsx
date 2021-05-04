@@ -31,7 +31,7 @@ export const useShowEpisodeFetch = ({showId, seasonNumber}) => {
     } else {
       fetchEpisodeInfo()
     }
-  }, [fetchEpisodeInfo])
+  }, [fetchEpisodeInfo, seasonNumber, showId])
 
   useEffect(() => {
     let name = `${showId}_${seasonNumber}_episodes`

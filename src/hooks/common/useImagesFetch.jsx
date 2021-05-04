@@ -35,7 +35,7 @@ export const useImagesFetch = (elementId, elementType) => {
       getAllImages()
     }
 
-  }, [getAllImages])
+  }, [getAllImages, elementId, elementType])
 
   useEffect(() => {
     let name = `${elementType}_${elementId}_images`;
